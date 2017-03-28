@@ -8,7 +8,6 @@
 Training.destroy_all
 Order.destroy_all
 Location.destroy_all
-Training.destroy_all
 City.destroy_all
 User.destroy_all
 Session.destroy_all
