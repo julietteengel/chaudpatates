@@ -25,6 +25,7 @@ gem 'money-rails'
 gem 'stripe'
 gem "gmaps4rails"
 gem 'rack-canonical-host'
+gem 'rails_12factor'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
