@@ -1,6 +1,6 @@
 ActiveAdmin.register Location do
 	menu priority: 3
-	permit_params :name, :address, :photo
+	permit_params :name, :address, :photo, :public_description, :private_description
 
 	filter :training
   filter :name
