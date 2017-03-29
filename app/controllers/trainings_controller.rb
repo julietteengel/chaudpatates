@@ -52,7 +52,7 @@ class TrainingsController < ApplicationController
 	private
 
   def training_params
-    params.require(:training).permit(:date, :location_id, level: [])
+    params.require(:training).permit(:date, :location_id, :level, :inoutdoor)
   end
 
   def set_training

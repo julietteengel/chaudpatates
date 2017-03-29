@@ -1,5 +1,5 @@
 ActiveAdmin.register Training do
-  permit_params :city_id, :location_id, :date, :level
+  permit_params :city_id, :location_id, :date, :level, :inoutdoor
 	menu priority: 5
   filter :city
   filter :location
@@ -7,6 +7,7 @@ ActiveAdmin.register Training do
   # filter :private_description
   filter :date
   filter :level, label: 'LEVEL', collection: Training::LEVELS
+  filter :inoutdoor, label: 'Indoor/Outdoor', collection: Training::INOUTDOORS
   filter :created_at
 
   controller do
@@ -24,6 +25,7 @@ ActiveAdmin.register Training do
       # input :public_description
       # input :private_description
       input :level, as: :select, collection: Training::LEVELS
+      input :inoutdoor, as: :select, collection: Training::INOUTDOORS
       input :date, :minute_step => 5
     end
     f.actions
@@ -35,6 +37,7 @@ ActiveAdmin.register Training do
     column :date
     column :location
     column :level
+    column :inoutdoor
     # column :level do
     #   select :level, collection: Training::LEVELS
     # end
