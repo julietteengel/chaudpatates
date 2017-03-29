@@ -54,7 +54,7 @@
             <% end %>
           </div>
         </div>
-        <% if @next_location && @next_training.public_description %>
+        <% if @next_location %>
           <div class="row">
             <div class="col-xs-12 section-location">
               <h3 class="text-center section-title">Prochain départ</h3>
@@ -68,7 +68,6 @@
                         <%= @next_location.address %>
                       </a>
                     </p>
-                    <p><%= @next_training.public_description %></p>
                   </div>
                 </div>
             </div>
