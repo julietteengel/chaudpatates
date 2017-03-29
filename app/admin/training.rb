@@ -1,14 +1,13 @@
 ActiveAdmin.register Training do
+  permit_params :city_id, :location_id, :date, :level, :inoutdoor
 	menu priority: 5
-	permit_params :public_description, :private_description, :city_id, :location_id, :date, :level
-
   filter :city
   filter :location
-  filter :public_description
-  filter :private_description
+  # filter :public_description
+  # filter :private_description
   filter :date
-  # filter :level, label: 'LEVEL', collection: Training::LEVELS
-  filter :level, label: 'LEVEL', collection: proc { Training::LEVELS }
+  filter :level, label: 'LEVEL', collection: Training::LEVELS
+  filter :inoutdoor, label: 'Indoor/Outdoor', collection: Training::INOUTDOORS
   filter :created_at
 
   controller do
@@ -17,17 +16,19 @@ ActiveAdmin.register Training do
     end
   end
 
+
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    inputs do
+    f.inputs do
       input :city
       input :location
-      input :public_description
-      input :private_description
-      input :level, label: 'LEVEL', collection: Training::LEVELS
+      # input :public_description
+      # input :private_description
+      input :level, as: :select, collection: Training::LEVELS
+      input :inoutdoor, as: :select, collection: Training::INOUTDOORS
       input :date, :minute_step => 5
     end
-    actions
+    f.actions
   end
 
 	index do
@@ -36,8 +37,12 @@ ActiveAdmin.register Training do
     column :date
     column :location
     column :level
-    column :public_description
-    column :private_description
+    column :inoutdoor
+    # column :level do
+    #   select :level, collection: Training::LEVELS
+    # end
+    # column :public_description
+    # column :private_description
     column :created_at
     actions
   end

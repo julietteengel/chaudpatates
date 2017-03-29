@@ -51,6 +51,8 @@ fr:
         address: "Adresse"
         created_at: "Date de création"
         updated_at: "Date de mise à jour"
+        public_description: "Description publique"
+        private_description: "Description privée"
       session:
         day: "Jour"
         time_of_day: "Heure"
@@ -59,8 +61,6 @@ fr:
         updated_at: "Date de mise à jour"
       training:
         location: "Lieu de départ"
-        public_description: "Description publique"
-        private_description: "Description privée"
         created_at: "Date de création"
         city: "Ville"
         updated_at: "Date de mise à jour"

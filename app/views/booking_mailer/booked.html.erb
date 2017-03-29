@@ -3,10 +3,13 @@
 <p>
   Votre inscription à l'entraînement du <%= l(@booking.training.date, format: '%A %d %B, à %Hh%M')%> a bien été enregistrée.
   <% if @booking.training.location %>
-    L'adresse de départ : <%= @booking.training.location.name %></br><%= @booking.training.location.address %>.
+    L'adresse de départ : <%= @booking.training.location.name %></br><%= @booking.training.location.address %>. <br>
+    Informations complémentaires : <br>
+    <%= @booking.training.location.private_description %>
   <% else %>
-    Le lieux de départ n'a pas encore été communiqué mais il sera affiché sur la page de ta ville plus tard.
+    Le lieu de départ n'a pas encore été communiqué mais il sera affiché sur la page de votre ville plus tard.
   <% end %>
+  <br>
   Votre coach <%= @booking.training.city.coach.first_name %> sera là pour vous accueillir.
 </p>
 

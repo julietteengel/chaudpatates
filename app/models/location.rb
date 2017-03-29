@@ -8,6 +8,8 @@ class Location < ApplicationRecord
 	validates :name, presence: true
 	validates :photo, presence: true
 	validates :address, presence: true, length: { in: ADDRESSLENGTH }
+  validates :public_description, :private_description, presence: true
+  # validates :public_description, :private_description, length: { minimum: 140 }
 
 	has_attachment :photo
 

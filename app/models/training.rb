@@ -1,17 +1,18 @@
 class Training < ApplicationRecord
 
   LEVELS = ['Patator', 'Patate Douce', 'Tous niveaux']
+  INOUTDOORS = ['Indoor', 'Outdoor']
   belongs_to :city
   belongs_to :location
   belongs_to :session
   has_many :bookings, dependent: :destroy
-
   validates :city_id, :date, presence: true
   #validates :location, :public_description, :private_description, presence: true, on: :update
   #validates :public_description, :private_description, length: { minimum: 140 }, on: :update
   validate :date_cannot_be_in_the_past, on: :create
-  validates :level, presence: true
-  validates_inclusion_of :level, :in => LEVELS
+  # validates :level, presence: true
+  # validates :inoutdoor, presence:true
+  # validates_inclusion_of :level, :in => LEVELS
   # validate :date_has_to_be_in_session
 
   scope :session_is, -> (session) { where(session: session) }

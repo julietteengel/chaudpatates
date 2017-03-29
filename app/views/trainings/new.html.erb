@@ -9,8 +9,6 @@
           <div class="form-inputs">
 	          <%= f.input :date, required: true, :minute_step => 5 %>
 	          <%= f.association :location, required: true, collection: Location.city(current_user.city),label_method: :select_label %>
-	          <%= f.input :public_description, required: true, placeholder: 'Venez-nous retrouver pour une superbe séance de sport' %>
-	          <%= f.input :private_description, required: true, placeholder: 'Première séance pour de nombreuses personnes, rythmes prévu tranquille' %>
          </div>
          <div class="text-center">
           <div class="form-actions">
