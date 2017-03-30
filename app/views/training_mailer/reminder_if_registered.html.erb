@@ -1,0 +1,16 @@
+<h1>Bonjour <%= @member.first_name %>,</h1>
+
+<p>
+Votre séance Chaud Patate du <%= l(@training.date, format: '%A %d %B, à %Hh%M') %> a lieu dans une heure!
+Informations complémentaires :
+<%= @location.address %>
+<br>
+<%= @location.private_description %>
+</p>
+Niveau du training : <%= training.level %>
+Training <%= training.inoutdoor %>
+
+
+<p>A bientôt!</p>
+
+<p>Paul de Chaud Patate</p>
