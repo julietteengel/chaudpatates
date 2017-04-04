@@ -34,7 +34,7 @@ class TrainingMailer < ApplicationMailer
   def send_cancellation_email(member)
     @member = member
     date = @training.date.strftime('%A %d %Y')
-    mail(to: member.email, subject: 'Annulation de l\'entrainement du #{date}')
+    mail(to: member.email, subject: 'Annulation de l\'entrainement')
   end
 
 def send_reminder_if_registered(member)

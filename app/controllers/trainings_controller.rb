@@ -41,6 +41,10 @@ class TrainingsController < ApplicationController
   end
 
 	def destroy
+  @training.members.each do |member|
+      member.tickets_nb += 1
+      member.save
+  end
     if @training.destroy
       flash[:notice] = "Cet entrainement a bien été annulé"
     else
