@@ -13,12 +13,14 @@
   </div>
 </div>
 <div class="container">
-  <div class="row">
-    <div class="buttons">
-      <a href="#concept" id="concept-button" class="btn btn-gray">Découvrir notre concept</a>
-      <%= link_to "Devenir membre", new_user_session_path, class: "btn btn-green" %>
+  <% unless user_signed_in? %>
+    <div class="row">
+      <div class="buttons">
+        <a href="#concept" id="concept-button" class="btn btn-gray">Découvrir notre concept</a>
+        <%= link_to "Devenir membre", new_user_session_path, class: "btn btn-green" %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="row" id="cities">
     <h2 class="text-center spaced-bottom spaced-top">
       Pour t'inscrire sélectionne ci-dessous ta ville:<br />
