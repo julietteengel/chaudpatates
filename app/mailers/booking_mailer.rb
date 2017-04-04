@@ -24,8 +24,9 @@ class BookingMailer < ApplicationMailer
 
   def cancelled(booking)
     @booking = booking
-    # Envoyer un mail au coach quand une personne annule sa séance
+    # Envoyer un mail au coach quand une personne annule sa séance mais pas quand le coach a annulé la séance depuis l'admin
     recipients = [@booking.training.city.coach.email,'contact@chaudpatate.org' ]
     mail(to: recipients, subject: "#{@booking.user.full_name} a annulé sa séance")
   end
+
 end
