@@ -22,7 +22,7 @@ class Booking < ApplicationRecord
     end
   end
 
-  def notify_admin_cancellation
+  def notify_admin_cancellation # TODO
     # unless current_user == training.city.coach
     BookingMailer.cancelled(self).deliver_now
     # end

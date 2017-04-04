@@ -64,15 +64,6 @@ class Training < ApplicationRecord
     TrainingMailer.cancellation(self).deliver_now
   end
 
-  # def refund_user
-  #   # @training = Training.find(params[:id])
-  #   # authorize @training
-  #   @training.members.each do |member|
-  #     member.tickets_nb += 1
-  #     member.save
-  #   end
-  # end
-
   def notify_member_before_training
     TrainingMailer.reminder_if_registered(self).deliver_later(wait_until: training.date - 1.hour)
     # BookingMailer.delay_until(training.date - 2.days).upcoming(self)
