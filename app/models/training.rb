@@ -1,7 +1,7 @@
 class Training < ApplicationRecord
 
   LEVELS = ['Patator', 'Patate Douce', 'Tous niveaux']
-  INOUTDOORS = ['Indoor', 'Outdoor']
+  INOUTDOORS = ['Indoor', 'Outdoor', 'En fonction de la météo']
   belongs_to :city
   belongs_to :location
   belongs_to :session
