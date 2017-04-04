@@ -13,19 +13,17 @@
   </div>
 </div>
 <div class="container">
-  <div class="row">
-    <div class="buttons">
-      <a href="#concept" id="concept-button" class="btn btn-gray">Découvrir notre concept</a>
-      <%= link_to "Devenir membre", new_user_session_path, class: "btn btn-green" %>
+  <% unless user_signed_in? %>
+    <div class="row">
+      <div class="buttons">
+        <a href="#concept" id="concept-button" class="btn btn-gray">Découvrir notre concept</a>
+        <%= link_to "Devenir membre", new_user_session_path, class: "btn btn-green" %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="row" id="cities">
     <h2 class="text-center spaced-bottom spaced-top">
-      Où trouver Chaud Patate ?<br />
-      <small>
-        Pour ouvrir des sessions dans votre ville&nbsp;&nbsp;&nbsp;
-        <a href="mailto:contact@chaudpatate.org">contact@chaudpatate.org</href>
-      </small>
+      Pour t'inscrire sélectionne ci-dessous ta ville:<br />
     </h2>
 <!--     Faire boucle sur les villes  -->
     <div class="cities">
@@ -44,6 +42,14 @@
       <% end %>
     </div>
   </div>
+  <div class='row'>
+  <h2 class="text-center spaced-bottom spaced-top">
+    <small>
+        Pour ouvrir des sessions dans votre ville contactez-nous : &nbsp;&nbsp;&nbsp; <br>
+        <a href="mailto:contact@chaudpatate.org">contact@chaudpatate.org</href>
+      </small>
+    </h2>
+    </div>
 </div>
 <div class="bg-grey spaced-top padded" id="concept">
   <div class="container">

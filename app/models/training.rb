@@ -1,7 +1,7 @@
 class Training < ApplicationRecord
 
   LEVELS = ['Patator', 'Patate Douce', 'Tous niveaux']
-  INOUTDOORS = ['Indoor', 'Outdoor']
+  INOUTDOORS = ['Indoor', 'Outdoor', 'En fonction de la météo']
   belongs_to :city
   belongs_to :location
   belongs_to :session
@@ -23,6 +23,7 @@ class Training < ApplicationRecord
   has_attachment :photo
 
   before_destroy :notify_user_for_cancellation, prepend: true
+  # before_destroy :refund_user, prepend: true
   after_create :notify_member_before_training
   after_create :notify_non_member_before_training
 
@@ -62,6 +63,15 @@ class Training < ApplicationRecord
   def notify_user_for_cancellation
     TrainingMailer.cancellation(self).deliver_now
   end
+
+  # def refund_user
+  #   # @training = Training.find(params[:id])
+  #   # authorize @training
+  #   @training.members.each do |member|
+  #     member.tickets_nb += 1
+  #     member.save
+  #   end
+  # end
 
   def notify_member_before_training
     TrainingMailer.reminder_if_registered(self).deliver_later(wait_until: training.date - 1.hour)

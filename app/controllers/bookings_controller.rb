@@ -55,7 +55,7 @@ class BookingsController < ApplicationController
 			current_user.save
       respond_to do |format|
         format.html {
-          flash[:notice] = "Votre inscription a bien été annulé"
+          flash[:notice] = "Votre inscription a bien été annulée"
           redirect_to(bookings_path)
         }
         format.js
@@ -63,7 +63,7 @@ class BookingsController < ApplicationController
     else
       respond_to do |format|
         format.html {
-          flash[:alert] = "Votre inscription à l'entrainement n'a pas été annulé"
+          flash[:alert] = "Votre inscription à l'entrainement n'a pas été annulée"
           (render :index)
         }
         format.js
