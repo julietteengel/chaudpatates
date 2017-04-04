@@ -11,7 +11,7 @@ ActiveAdmin.register Booking do
       Booking.includes([:user, training: [:city]])  # specify grandchild model with hash!
     end
   end
-	
+
 	index do
     selectable_column
     column :id
