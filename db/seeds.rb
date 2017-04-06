@@ -75,47 +75,51 @@ paris_second_session = Session.create!(
 	city_id: paris.id
 	)
 
-# training_fake = Training.create!(
-#   city_id: lyon.id,
-#   public_description: "amazing fake training public",
-#   private_description: "amazing fake training private",
-#   date: Time.new(2017, 10, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S")
-#   )
+training_fake = Training.create!(
+  city_id: lyon.id,
+  public_description: "amazing fake training public",
+  private_description: "amazing fake training private",
+  date: Time.new(2017, 10, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S")
+  )
 
-# training_fake2 = Training.create!(
-#   city_id: lyon.id,
-#   public_description: "amazing fake training public",
-#   private_description: "amazing fake training private",
-#   date: Time.new(2017, 07, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S")
-#   )
+training_fake2 = Training.create!(
+  city_id: lyon.id,
+  public_description: "amazing fake training public",
+  private_description: "amazing fake training private",
+  date: Time.new(2017, 07, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S")
+  )
 
-# training_fake3 = Training.create!(
-#   city_id: paris.id,
-#   public_description: "amazing fake training public",
-#   private_description: "amazing fake training private",
-#   date: Time.new(2017, 07, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S")
-#   )
+training_fake3 = Training.create!(
+  city_id: paris.id,
+  public_description: "amazing fake training public",
+  private_description: "amazing fake training private",
+  date: Time.new(2017, 07, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S")
+  )
 
-# wednesday_session = Session.create!(
-#   day: 2,
-#   time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
-#   city_id: strasbourg.id
-#   )
+wednesday_session = Session.create!(
+  day: 2,
+  time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
+  city_id: strasbourg.id
+  )
 
-# thursday_session = Session.create!(
-#   day: 3,
-#   time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
-#   city_id: aix.id
-#   )
+thursday_session = Session.create!(
+  day: 3,
+  time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
+  city_id: aix.id
+  )
 
 le_wagon = Location.create!(
 	name: "Le Wagon",
+  private_description: "super desc",
+  public_description: "super desc",
 	address: "16 Villa Gaudelet, 75011 Paris",
 	photo: Cloudinary::Uploader.upload("http://lewagon.github.io/ui-components/images/lewagon.png")
 	)
 
 belle_mai = Location.create!(
   name: "Belle de Mai",
+  private_description: "super desc",
+  public_description: "super desc",
   address: "37 Rue Guibal, 13003 Marseille",
   photo: Cloudinary::Uploader.upload("http://www.belledemai.org/wp-content/themes/rewalk-parent/default_media/logo-simple.png")
   )
