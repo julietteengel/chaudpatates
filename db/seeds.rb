@@ -60,53 +60,59 @@ lyon_first_session = Session.create!(
 lyon_second_session = Session.create!(
   day: 2,
   time_of_day: Time.new(2017, 10, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S"),
-  city_id: lyon.id
+  city_id: lyon.id,
   )
 
 paris_first_session = Session.create!(
 	day: 0,
 	time_of_day: Time.new(2017, 05, 16, 19, 30, 0, "+02:00").strftime("%H:%M:%S"),
-	city_id: paris.id
+	city_id: paris.id,
 	)
 
 paris_second_session = Session.create!(
 	day: 2,
 	time_of_day: Time.new(2017, 10, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S"),
-	city_id: paris.id
+	city_id: paris.id,
 	)
 
 training_fake = Training.create!(
   city_id: lyon.id,
-  public_description: "amazing fake training public",
-  private_description: "amazing fake training private",
+  level: 'Patator',
+  inoutdoor: 'Indoor',
+  # public_description: "amazing fake training public",
+  # private_description: "amazing fake training private",
   date: Time.new(2017, 10, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S")
   )
 
 training_fake2 = Training.create!(
   city_id: lyon.id,
-  public_description: "amazing fake training public",
-  private_description: "amazing fake training private",
+  level: 'Patator',
+  inoutdoor: 'Indoor',
+  # public_description: "amazing fake training public",
+  # private_description: "amazing fake training private",
   date: Time.new(2017, 07, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S")
   )
 
 training_fake3 = Training.create!(
   city_id: paris.id,
-  public_description: "amazing fake training public",
-  private_description: "amazing fake training private",
+  level: 'Patator',
+  inoutdoor: 'Indoor',
+  # public_description: "amazing fake training public",
+  # private_description: "amazing fake training private",
   date: Time.new(2017, 07, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S")
   )
 
-wednesday_session = Session.create!(
-  day: 2,
-  time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
-  city_id: strasbourg.id
-  )
+# wednesday_session = Session.create!(
+#   day: 2,
+#   time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
+#   city_id: strasbourg.id
+#   )
 
-thursday_session = Session.create!(
-  day: 3,
-  time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
-  city_id: aix.id
-  )
+# thursday_session = Session.create!(
+#   day: 3,
+#   time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
+#   city_id: aix.id
+#   )
 
 le_wagon = Location.create!(
 	name: "Le Wagon",

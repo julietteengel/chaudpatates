@@ -24,8 +24,8 @@ class Training < ApplicationRecord
 
   before_destroy :notify_user_for_cancellation, prepend: true
   # before_destroy :refund_user, prepend: true
-  after_create :notify_member_before_training
-  after_create :notify_non_member_before_training
+  # after_create :notify_member_before_training
+  # after_create :notify_non_member_before_training
 
   def booked_by?(user)
     user.bookings.each do |booking|
@@ -64,14 +64,14 @@ class Training < ApplicationRecord
     TrainingMailer.cancellation(self).deliver_now
   end
 
-  def notify_member_before_training
-    TrainingMailer.reminder_if_registered(self).deliver_later(wait_until: training.date - 1.hour)
-    # BookingMailer.delay_until(training.date - 2.days).upcoming(self)
-  end
+  # def notify_member_before_training
+  #   TrainingMailer.reminder_if_registered(self).deliver_later(wait_until: training.date - 1.hour)
+  #   # BookingMailer.delay_until(training.date - 2.days).upcoming(self)
+  # end
 
-    def notify_non_member_before_training
-    TrainingMailer.reminder_if_not_registered(self).deliver_later(wait_until: training.date - 1.day)
-    # BookingMailer.delay_until(training.date - 2.days).upcoming(self)
-  end
+  #   def notify_non_member_before_training
+  #   TrainingMailer.reminder_if_not_registered(self).deliver_later(wait_until: training.date - 1.day)
+  #   # BookingMailer.delay_until(training.date - 2.days).upcoming(self)
+  # end
 
 end
