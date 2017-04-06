@@ -4,12 +4,18 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_filter :store_current_location, unless: :devise_controller?
   before_filter :set_tickets_package_for_order
-  # before_filter :set_current_user
+  before_filter :set_current_user
+
 
   include Pundit
 
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+
+
+def set_current_user
+  Booking.current_user = current_user
+end
 
   private
 

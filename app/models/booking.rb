@@ -4,6 +4,7 @@ class Booking < ApplicationRecord
 
 	validates :user_id, presence: true
 	validates :training_id, presence: true
+  cattr_accessor :current_user
 
 	scope :past, -> { joins(:training).merge(Training.past.order(:date)) }
 	scope :upcoming, -> { joins(:training).merge(Training.upcoming.order(:date)) }
@@ -22,10 +23,11 @@ class Booking < ApplicationRecord
     end
   end
 
-  def notify_admin_cancellation
-    # unless current_user == training.city.coach
+
+  def notify_admin_cancellation # TODO
+    unless current_user == training.city.coach
     BookingMailer.cancelled(self).deliver_now
-    # end
+    end
   end
 
 end
