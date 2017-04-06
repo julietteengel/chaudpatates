@@ -11,7 +11,7 @@ class CreateTrainingsJob < ApplicationJob
   		training.city = city
   		training.session = session
   		set_training_date(training, time, day)
-      training.date = day.to_datetime + time.seconds_since_midnight.seconds
+      training.date = Date.tomorrow
   		training.save!
   		day += 7.days
   	end
