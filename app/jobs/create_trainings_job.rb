@@ -11,6 +11,7 @@ class CreateTrainingsJob < ApplicationJob
   		training.city = city
   		training.session = session
   		set_training_date(training, time, day)
+      training.date = day.to_datetime + time.seconds_since_midnight.seconds
   		training.save!
   		day += 7.days
   	end
@@ -26,11 +27,11 @@ class CreateTrainingsJob < ApplicationJob
   	Date.today + 6.months
   end
 
-  def set_training_date(training, time, day)
-		training.date = day.to_datetime + time.seconds_since_midnight.seconds
-    zone_of_day = training.date.zone
-    offset = Time.zone_offset(zone_of_day)
-    training.date -= offset.seconds
-  end
+  # def set_training_date(training, time, day)
+		# training.date = day.to_datetime + time.seconds_since_midnight.seconds
+  #   zone_of_day = training.date.zone
+  #   offset = Time.zone_offset(zone_of_day)
+  #   # training.date -= offset.seconds
+  # end
 
 end

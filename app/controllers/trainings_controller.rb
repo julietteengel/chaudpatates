@@ -1,4 +1,5 @@
 class TrainingsController < ApplicationController
+  require 'active_support/all'
 	before_action :set_training, only: [:update, :destroy]
 	skip_after_action :verify_policy_scoped, :only => :index
 
