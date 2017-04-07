@@ -65,12 +65,12 @@ class Training < ApplicationRecord
   end
 
   def notify_member_before_training
-    TrainingMailer.reminder_if_registered(self).deliver_later(wait_until: self.booking.date - 1.hour)
+    TrainingMailer.reminder_if_registered(self).deliver_later(wait_until: self.date - 1.hour)
     # BookingMailer.delay_until(training.date - 2.days).upcoming(self)
   end
 
     def notify_non_member_before_training
-    TrainingMailer.reminder_if_not_registered(self).deliver_later(wait_until: self.booking.date - 1.day)
+    TrainingMailer.reminder_if_not_registered(self).deliver_later(wait_until: self.date - 1.day)
     # BookingMailer.delay_until(training.date - 2.days).upcoming(self)
   end
 
