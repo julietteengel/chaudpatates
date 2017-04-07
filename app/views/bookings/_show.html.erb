@@ -4,7 +4,7 @@
     <p><%= l(booking.training.date, format: '%A %d %B, à %Hh%M').capitalize %></p>
   </div>
   <div class="event-coach hidden-xs hidden-sm">
-    <% if booking.training.city.coach.photo =! nil%>
+    <% if booking.training.city.coach.photo %>
       <%= cl_image_tag booking.training.city.coach.photo.path, class: "avatar-large" %>
     <% elsif  booking.training.city.coach.linkedin_picture_url %>
       <%= cl_image_tag booking.training.city.coach.linkedin_picture_url(:small_face), height: 60, width: 60, crop: :fill %>
