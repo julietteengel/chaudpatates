@@ -10,16 +10,16 @@ class Session < ApplicationRecord
 
   scope :city, -> (city) { where( city: city) }
 
-  after_commit :create_trainings, on: :create
-  after_commit :update_trainings, on: :update
+  # after_commit :create_trainings, on: :create
+  # after_commit :update_trainings, on: :update
 
-  private
+  # private
 
-  def create_trainings
-    CreateTrainingsJob.set(wait: 10.seconds).perform_later(self, self.city)
-  end
+  # def create_trainings
+  #   CreateTrainingsJob.set(wait: 10.seconds).perform_later(self, self.city)
+  # end
 
-  def update_trainings
-  	UpdateTrainingsJob.set(wait: 10.seconds).perform_later(self, self.city)
-  end
+  # def update_trainings
+  # 	UpdateTrainingsJob.set(wait: 10.seconds).perform_later(self, self.city)
+  # end
 end
