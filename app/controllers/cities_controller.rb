@@ -29,7 +29,10 @@ class CitiesController < ApplicationController
 	end
 
   def set_next_location
+    if @next_training.blank? == false && @next_training
     @next_location = @next_training.location if @next_training && @next_training.location
+    # elsif if @next_training.empty? == false
+    end
   end
 
 	def set_city_members
@@ -37,12 +40,15 @@ class CitiesController < ApplicationController
 	end
 
 	def create_hash_location
+    # if @next_training.empty? == false
+    if @next_training.blank? == false && @next_training
     return unless @next_training && @next_training.location
 		@hash_location = Gmaps4rails.build_markers(@next_training.location) do |location, marker|
       marker.lat location.latitude
       marker.lng location.longitude
       marker.infowindow "<h5>#{location.name}</h5><p>#{location.address}</p>"
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      end
     end
 	end
 end
