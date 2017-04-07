@@ -96,17 +96,17 @@ training_fake3 = Training.create!(
   date: Time.new(2017, 07, 18, 19, 30, 0, "+02:00").strftime("%H:%M:%S")
   )
 
-wednesday_session = Session.create!(
-  day: 2,
-  time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
-  city_id: strasbourg.id
-  )
+# wednesday_session = Session.create!(
+#   day: 2,
+#   time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
+#   city_id: strasbourg.id
+#   )
 
-thursday_session = Session.create!(
-  day: 3,
-  time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
-  city_id: aix.id
-  )
+# thursday_session = Session.create!(
+#   day: 3,
+#   time_of_day: Time.new(2017, 10, 31, 19, 0, 0, "+02:00").strftime("%H:%M:%S"),
+#   city_id: aix.id
+#   )
 
 le_wagon = Location.create!(
 	name: "Le Wagon",
