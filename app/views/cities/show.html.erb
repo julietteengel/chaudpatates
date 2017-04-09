@@ -22,7 +22,7 @@
           <h2><%= @city.name.capitalize %></h2>
           <% @city.sessions.each do |session| %>
             <h4>
-              <%= "Les #{t(:"date.day_names")[wday(session.day)]} à #{session.time_of_day.strftime('%Hh%M')}" %>
+              <%= "Les #{t(:"date.day_names")[wday(session.day)]}s à #{session.time_of_day.strftime('%Hh%M')}" %>
             </h4>
           <% end %>
         </div>
