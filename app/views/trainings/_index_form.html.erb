@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body flex-content space-around trainings">
         <ul class="trainings">
-        <% if @next_training.kind_of?(Array) %>
+        <% if @next_trainings.kind_of?(Array) %>
           <% @next_trainings.each do |training| %>
             <li id="training-<%= training.id %>">
               <div class="training">
