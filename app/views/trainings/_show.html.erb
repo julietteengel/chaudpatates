@@ -22,7 +22,25 @@
   </div>
 </div>
 <div class="list-card participants-card">
-  <% if training.number_of_participants > 0 %>
+  <% if 0 < training.number_of_participants and training.number_of_participants < 2 %>
+        <div class="event-date">
+      Participant:
+      </div>
+      <div>
+      <ul>
+          <li class="participant">
+          <% if training.members.photo %>
+          <%= cl_image_tag training.members.photo.path, width: 50, height: 50, crop: :fill, class: 'avatar-large' %>
+          <% else %>
+          <%= image_tag('no-img.png', width: 50, height: 70, crop: :fill, class: 'avatar-large') %>
+          <% end %>
+          <div class="attendance-name">
+            <%=  training.members.full_name %>
+          </div>
+          </li>
+      </ul>
+      </div>
+  <% elsif training.number_of_participants > 1 %>
       <div class="event-date">
       Participants:
       </div>
