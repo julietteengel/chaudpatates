@@ -57,7 +57,7 @@
         <% if @next_location %>
           <div class="row">
             <div class="col-xs-12 section-location">
-              <h3 class="text-center section-title">Prochain départ</h3>
+              <h3 class="text-center section-title">Prochaine séance de Networking Sportif</h3>
                 <div class="location-details">
                   <%= cl_image_tag @next_location.photo.path, width: 120, height: 120, crop: :fill, class: "avatar-huge" %>
                   <div>
@@ -78,7 +78,7 @@
         <% end %>
           <div class="row">
             <div class="col-xs-12 section-members <%= 'inactive' if @city_members.empty? %>">
-              <h3 class="text-center section-title">Membres à <%= @city.name %></h3>
+              <h3 class="text-center section-title">Membres de Chaud Patate à  <%= @city.name %></h3>
               <div class="members-listing">
               <% unless @city_members.empty? %>
                 <% @city_members.each do |city_member| %>
