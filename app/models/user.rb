@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :order
   has_attachment :photo
+  before_create :set_access_token
+  # validates :promocode, presence: true
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -54,9 +56,38 @@ class User < ApplicationRecord
     self.email
   end
 
+  def registrations_complete
+    self.bookings.past.count
+  end
+
+  def badge
+    if registrations_complete == 0
+      :newbie
+    elsif registrations_complete >= 1 and registrations_complete <= 3
+      :regular
+    elsif registrations_complete > 3 and registrations_complete < 6
+      :advanced
+    else
+      :expert
+    end
+  end
+
   private
 
   def send_welcome_email
     UserMailer.welcome(self).deliver_now
   end
+
+  private
+    def set_access_token
+      self.access_token = generate_token
+    end
+
+    def generate_token
+      loop do
+        promocode = SecureRandom.hex(10)
+        break promocode unless User.where(access_token: promocode).exists?
+      end
+  end
+
 end

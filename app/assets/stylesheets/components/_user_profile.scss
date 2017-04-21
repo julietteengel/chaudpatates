@@ -1,0 +1,102 @@
+.user-profile-image {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: -60px;
+  right: 50%;
+  transform: translateX(60px);
+}
+
+.user-edit-button {
+  position: absolute;
+  right: 0px;
+  top: -50px;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 auto;
+  background-color: #fff;
+  width: 63px;
+  height: 40px;
+  line-height: 40px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  color:#A0A6AD;
+}
+
+.user-bio,.user-organization,.user-past-events, .user-basic-info {
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  position: relative;
+  background-color: #fff;
+  max-width: 600px;
+  // height: 300px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  color:$gray;
+}
+
+.user-basic-info {
+  margin-top: 70px;
+  padding-top: 60px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.user-past-events {
+  border-radius: 4px 4px 0px 0px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.star-orange {
+  color: $orange;
+}
+
+.trophy-purple {
+  color: $purple;
+}
+
+.trophy-badge {
+  border: 3px solid white;
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  transform: translateX(19px);
+  z-index: 999;
+  background-color: $purple;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding-top: 6px;
+  padding-left: 1px;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.trophy-badge-title {
+  border-radius: 4px;
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  transform: translateX(65px);
+  z-index: 999;
+
+  border-radius: 4px;
+  padding: 0 10px;
+  text-align: center;
+  vertical-align: middle;
+  height: 20px;
+  // width: 60px;
+  background-color: $light-purple;
+
+  line-height: 22px;
+  font-size: 8px;
+  font-family: "Avenir";
+  font-weight: 700px;
+  color: $purple;
+}
