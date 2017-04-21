@@ -57,7 +57,7 @@
 }
 
 .trophy-purple {
-  color: $purple;
+  color: $blue;
 }
 
 .trophy-badge {
@@ -67,7 +67,7 @@
   top: 18px;
   transform: translateX(19px);
   z-index: 999;
-  background-color: $purple;
+  background-color: $blue;
   color: #fff;
   width: 40px;
   height: 40px;
@@ -92,11 +92,11 @@
   vertical-align: middle;
   height: 20px;
   // width: 60px;
-  background-color: $light-purple;
+  background-color: $light-blue;
 
   line-height: 22px;
   font-size: 8px;
-  font-family: "Avenir";
+  font-family: "Roboto";
   font-weight: 700px;
-  color: $purple;
+  color: $blue;
 }

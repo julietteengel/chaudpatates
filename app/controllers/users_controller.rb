@@ -5,5 +5,12 @@ class UsersController < ApplicationController
   def show
     # Display the public profile of a specific user
     @user = User.find(params[:id])
+    @past_events_attended = past_events_attendee(@user)
+  end
+
+private
+
+  def past_events_attendee(user)
+    @user.bookings.past
   end
 end

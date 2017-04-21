@@ -1,0 +1,71 @@
+<div class="user-basic-info">
+
+  <% if current_user == @user %>
+  <%= link_to edit_user_registration_path do %>
+
+  <div class="user-edit-button">
+    <i class="fa fa-pencil pencil" aria-hidden="true"></i>
+  </div>
+  <% end %>
+  <% end %>
+
+  <% if current_user.photo %>
+  <%= cl_image_tag current_user.photo.path, height: '120', width: '120', crop: :fill, class: "user-profile-image avatar-huge" %>
+  <% elsif  current_user.linkedin_picture_url %>
+  <%= cl_image_tag current_user.linkedin_picture_url, height: '120', width: '120', crop: :fill, class: "user-profile-image avatar-huge" %>
+  <% else %>
+  <%= image_tag "http://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png", height: '120', width: '120', crop: :fill, class: "user-profile-image avatar-huge" %>
+  <% end %>
+
+  <div class="trophy-badge"><i class="fa fa-trophy" aria-hidden="true"></i></div>
+
+  <div class="trophy-badge-title">
+    <% if @user.badge == :newbie %>
+    VOLUNTEER ROOKIE
+    <% elsif @user.badge == :regular %>
+    VOLUNTEER NINJA
+    <% elsif @user.badge == :advanced %>
+    EXPERT VOLUNTEER
+    <% else %>
+    VOLUNTEER GURU
+    <% end %>
+  </div>
+
+  <h2 class="user-name"><%= @user.first_name %> <%= @user.last_name %></h2>
+  <br>
+  <i class="fa fa-trophy trophy-purple" aria-hidden="true"></i> <%= @past_events_attended.count %> séances attendues
+  <br>
+  <br>
+
+  <i class="fa fa-envelope-o" aria-hidden="true"></i> <%= @user.email %>
+  <br>
+  <br>
+  <% if @user.company %>
+  <i class="fa fa-location-arrow" aria-hidden="true"></i> <%= @user.company %>
+  <br>
+  <br>
+  <% end %>
+  <% if @user.role %>
+  <i class="fa fa-location-arrow" aria-hidden="true"></i> <%= @user.company %>
+  <br>
+  <br>
+  <% end %>
+  <% if @user.phone %>
+  <i class="fa fa-phone" aria-hidden="true"></i> <%= @user.phone %>
+  <br>
+  <% end %>
+</div>
+
+
+
+<div class="user-bio">
+  <h2>A propos de moi :</h2>
+  <% if @user.bio %>
+  <%= @user.bio %>
+  <% else %>
+  <p> Pas encore de bio!</p>
+  <% end %>
+</div>
+
+
+</div>

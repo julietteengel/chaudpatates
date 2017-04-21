@@ -3,20 +3,23 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'
   end
+
   ActiveAdmin.routes(self)
 	mount Attachinary::Engine => "/attachinary"
-  devise_for :users,
-  	controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root to: 'pages#home'
   get "/pages/:page" => "pages#show"
 
-  resources :cities, only: [:show]
+  devise_for :users,
+  	controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users, only: [:show]
+
+  resources :cities, only: [:show]
   resources :trainings, only: [:index, :new, :create, :update, :destroy]
   resources :bookings, only: [:index, :create, :destroy]
   resources :orders, only: [:create] do
     resources :payments, only: [:create]
   end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

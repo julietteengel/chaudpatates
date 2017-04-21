@@ -41,6 +41,12 @@ class User < ApplicationRecord
     return user
   end
 
+  def has_photo?
+    return false unless self.photo
+    return true
+    #self.photo.path.present?
+  end
+
   def favorite_city
     unless self.bookings.empty?
       array_cities = self.bookings.includes(training: [:city]).map {|b| b.training.city }.group_by { |i| i }
