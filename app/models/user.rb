@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :order
   has_attachment :photo
-  before_create :set_access_token
+  # before_create :set_access_token
   # validates :promocode, presence: true
 
   validates :first_name, presence: true
@@ -85,15 +85,15 @@ class User < ApplicationRecord
   end
 
   private
-    def set_access_token
-      self.access_token = generate_token
-    end
+    # def set_access_token
+    #   self.access_token = generate_token
+    # end
 
-    def generate_token
-      loop do
-        promocode = SecureRandom.hex(10)
-        break promocode unless User.where(access_token: promocode).exists?
-      end
-  end
+    # def generate_token
+    #   loop do
+    #     promocode = SecureRandom.hex(10)
+    #     break promocode unless User.where(access_token: promocode).exists?
+    #   end
+    # end
 
 end

@@ -21,13 +21,13 @@
 
   <div class="trophy-badge-title">
     <% if @user.badge == :newbie %>
-    VOLUNTEER ROOKIE
+    Newbie
     <% elsif @user.badge == :regular %>
-    VOLUNTEER NINJA
+    Champion
     <% elsif @user.badge == :advanced %>
-    EXPERT VOLUNTEER
+    Athlète
     <% else %>
-    VOLUNTEER GURU
+    Olympien
     <% end %>
   </div>
 
@@ -59,7 +59,7 @@
 
 
 <div class="user-bio">
-  <h2>A propos de moi :</h2>
+  <h3>A propos de moi :</h3>
   <% if @user.bio %>
   <%= @user.bio %>
   <% else %>
