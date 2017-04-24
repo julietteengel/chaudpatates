@@ -31,10 +31,11 @@
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
               <% end %>
-
+              <% unless current_user.linkedin_picture_url %>
               <%= f.input :password, autocomplete: "off", hint: "Ne rien indiquer si vous souhaitez garder le même mot de passe", required: false %>
               <%= f.input :password_confirmation, required: false %>
               <%= f.input :current_password, hint: "Nous avons besoin de votre mot de passe actuel pour confirmer ces changements", required: false %>
+              <% end %>
             </div>
             <div class="form-actions">
               <%= f.button :submit, "Editer mon profil", class: "btn-validate btn-success btn" %>
