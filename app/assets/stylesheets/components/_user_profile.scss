@@ -1,10 +1,11 @@
 .user-profile-image {
-  width: 120px;
-  height: 120px;
-  // position: absolute;
-  // top: -60px;
-  // right: 50%;
-  transform: translateX(60px);
+      width: 120px;
+    height: 120px;
+    position: absolute;
+    top: -60px;
+    right: 40%;
+        border-radius: 50%;
+    border: white 6px solid;
 }
 
 
