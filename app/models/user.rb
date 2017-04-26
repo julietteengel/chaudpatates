@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Tokenable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -16,6 +17,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :is_coach, inclusion: { in: [true,false] }
   validates :tickets_nb, presence: true, numericality: { only_integer: true }
+  validates_uniqueness_of :promocode
 
   scope :is_coach, -> { where(is_coach: true) }
   scope :not_linked_to_city, -> { joins("LEFT OUTER JOIN cities ON cities.user_id = users.id").where("cities IS null") }
@@ -83,17 +85,5 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.welcome(self).deliver_now
   end
-
-  private
-    # def set_access_token
-    #   self.access_token = generate_token
-    # end
-
-    # def generate_token
-    #   loop do
-    #     promocode = SecureRandom.hex(10)
-    #     break promocode unless User.where(access_token: promocode).exists?
-    #   end
-    # end
 
 end
