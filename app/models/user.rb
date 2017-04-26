@@ -17,12 +17,13 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :is_coach, inclusion: { in: [true,false] }
   validates :tickets_nb, presence: true, numericality: { only_integer: true }
-  validates_uniqueness_of :promocode
+  # validates_uniqueness_of :promocode
 
   scope :is_coach, -> { where(is_coach: true) }
   scope :not_linked_to_city, -> { joins("LEFT OUTER JOIN cities ON cities.user_id = users.id").where("cities IS null") }
 
   after_create :send_welcome_email
+  after_create :check_if_promocode
 
   def self.find_for_linkedin_oauth(auth)
     user_params = auth.slice(:provider, :uid).to_h
@@ -84,6 +85,16 @@ class User < ApplicationRecord
 
   def send_welcome_email
     UserMailer.welcome(self).deliver_now
+  end
+
+  def check_if_promocode
+    if promocode.present?
+      if User.find_by_promocode(promocode).present?
+        user = User.find_by_promocode(promocode)
+        user.tickets_nb += 1
+        user.save
+      end
+    end
   end
 
 end
