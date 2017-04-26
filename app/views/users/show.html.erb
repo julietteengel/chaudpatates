@@ -5,7 +5,7 @@
 <div class="user-basic-info">
 
   <% if current_user == @user %>
-  <%= link_to edit_user_registration_path do %>
+  <%= link_to edit_user_path(@user) do %>
 
   <div class="user-edit-button">
     <i class="fa fa-pencil pencil" aria-hidden="true"></i>
