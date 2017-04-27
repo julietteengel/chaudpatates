@@ -1,3 +1,7 @@
+<div class="wrapper-gray">
+  <div class="container">
+    <div class="row">
+    <div class="col-xs-12"></div>
 <div class="user-basic-info">
 
   <% if current_user == @user %>
@@ -21,13 +25,13 @@
 
   <div class="trophy-badge-title">
     <% if @user.badge == :newbie %>
-    VOLUNTEER ROOKIE
+    Newbie
     <% elsif @user.badge == :regular %>
-    VOLUNTEER NINJA
+    Champion
     <% elsif @user.badge == :advanced %>
-    EXPERT VOLUNTEER
+    Athlète
     <% else %>
-    VOLUNTEER GURU
+    Olympien
     <% end %>
   </div>
 
@@ -40,18 +44,20 @@
   <i class="fa fa-envelope-o" aria-hidden="true"></i> <%= @user.email %>
   <br>
   <br>
+  <% if @user.phone %>
+  <i class="fa fa-phone" aria-hidden="true"></i> <%= @user.phone %>
+  <br>
+  <% end %>
+  <br>
+  <br>
   <% if @user.company %>
-  <i class="fa fa-location-arrow" aria-hidden="true"></i> <%= @user.company %>
+  <i class="fa fa-home" aria-hidden="true"></i> <%= @user.company %>
   <br>
   <br>
   <% end %>
   <% if @user.role %>
-  <i class="fa fa-location-arrow" aria-hidden="true"></i> <%= @user.company %>
+  <i class="fa fa-user" aria-hidden="true"></i> <%= @user.role %>
   <br>
-  <br>
-  <% end %>
-  <% if @user.phone %>
-  <i class="fa fa-phone" aria-hidden="true"></i> <%= @user.phone %>
   <br>
   <% end %>
 </div>
@@ -59,13 +65,18 @@
 
 
 <div class="user-bio">
-  <h2>A propos de moi :</h2>
+  <h3>A propos de moi :</h3>
   <% if @user.bio %>
   <%= @user.bio %>
   <% else %>
   <p> Pas encore de bio!</p>
   <% end %>
 </div>
-
+<div class="promocode">
 
 </div>
+</div>
+</div>
+</div>
+
+

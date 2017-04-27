@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Tokenable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,7 +9,7 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :order
   has_attachment :photo
-  before_create :set_access_token
+  # before_create :set_access_token
   # validates :promocode, presence: true
 
   validates :first_name, presence: true
@@ -16,11 +17,13 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :is_coach, inclusion: { in: [true,false] }
   validates :tickets_nb, presence: true, numericality: { only_integer: true }
+  # validates_uniqueness_of :promocode
 
   scope :is_coach, -> { where(is_coach: true) }
   scope :not_linked_to_city, -> { joins("LEFT OUTER JOIN cities ON cities.user_id = users.id").where("cities IS null") }
 
   after_create :send_welcome_email
+  # after_create :check_if_promocode
 
   def self.find_for_linkedin_oauth(auth)
     user_params = auth.slice(:provider, :uid).to_h
@@ -84,16 +87,16 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver_now
   end
 
-  private
-    def set_access_token
-      self.access_token = generate_token
-    end
-
-    def generate_token
-      loop do
-        promocode = SecureRandom.hex(10)
-        break promocode unless User.where(access_token: promocode).exists?
-      end
-  end
+  # def check_if_promocode
+  #   raise
+  #   unless invite_promocode.blank?
+  #     if User.find_by_promocode(self.invite_promocode).present?
+  #       user2 = User.find_by_promocode(invite_promocode)
+  #       user2.tickets_nb += 1
+  #       user2.save
+  #       raise
+  #     end
+  #   end
+  # end
 
 end

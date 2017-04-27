@@ -1,11 +1,13 @@
 .user-profile-image {
-  width: 120px;
-  height: 120px;
-  position: absolute;
-  top: -60px;
-  right: 50%;
-  transform: translateX(60px);
+      width: 120px;
+    height: 120px;
+    position: absolute;
+    top: -60px;
+    right: 40%;
+        border-radius: 50%;
+    border: white 6px solid;
 }
+
 
 .user-edit-button {
   position: absolute;
@@ -29,14 +31,20 @@
   padding: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-
   position: relative;
-  background-color: #fff;
+  // background-color: #EFEFEF;
   max-width: 600px;
   // height: 300px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  color:$gray;
+  // color:$gray;
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+.user-name h2 {
+  margin-top: 10px;
 }
 
 .user-basic-info {

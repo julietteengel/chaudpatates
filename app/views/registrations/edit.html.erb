@@ -1,0 +1,50 @@
+<div class="wrapper-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="form-card form-signup">
+          <h2 style="margin-bottom: 80px">Editer mon profil</h2>
+
+          <div class="simple-form-for">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :patch }) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="edit-photo center-photo">
+              <% if current_user.photo %>
+              <%= cl_image_tag current_user.photo.path, height: '120', width: '120', crop: :fill, class: "user-profile-image avatar-huge" %>
+              <% elsif  current_user.linkedin_picture_url %>
+              <%= cl_image_tag current_user.linkedin_picture_url, height: '120', width: '120', crop: :fill, class: "user-profile-image avatar-huge" %>
+              <% else %>
+              <%= image_tag "http://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png", height: '120', width: '120', crop: :fill, class: "user-profile-image avatar-huge" %>
+              <% end %>
+
+            </div>
+
+
+            <div class="form-inputs" style="padding-top: 68px">
+              <%= f.input :photo, as: :attachinary %>
+              <%= f.input :email, required: true, autofocus: true %>
+              <%= f.input :phone, required: false, autofocus: true %>
+              <%= f.input :company, required: false, autofocus: true %>
+              <%= f.input :role, required: false, autofocus: true %>
+              <%= f.input :bio, required: false, autofocus: true %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Editer mon profil", class: "btn-validate btn-success btn" %>
+            </div>
+            <% end %>
+          </div>
+          <br>
+
+
+          <div class="already_account_div">
+
+            <%= link_to "Supprimer mon compte", registration_path(@user), data: { confirm: "Êtes-vous sûr?" }, method: :delete, class: "already_account" %>
+          </div>
+          <div class="back">
+            <%= link_to "Revenir en arrière", @user %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

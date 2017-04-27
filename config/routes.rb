@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "/pages/:page" => "pages#show"
 
   devise_for :users,
-  	controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  	controllers: { omniauth_callbacks: 'users/omniauth_callbacks', :registrations => "registrations" }
   resources :users, only: [:show]
 
   resources :cities, only: [:show]
