@@ -23,7 +23,7 @@ class User < ApplicationRecord
   scope :not_linked_to_city, -> { joins("LEFT OUTER JOIN cities ON cities.user_id = users.id").where("cities IS null") }
 
   after_create :send_welcome_email
-  after_create :check_if_promocode
+  # after_create :check_if_promocode
 
   def self.find_for_linkedin_oauth(auth)
     user_params = auth.slice(:provider, :uid).to_h
@@ -87,14 +87,16 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver_now
   end
 
-  def check_if_promocode
-    if promocode.present?
-      if User.find_by_promocode(promocode).present?
-        user = User.find_by_promocode(promocode)
-        user.tickets_nb += 1
-        user.save
-      end
-    end
-  end
+  # def check_if_promocode
+  #   raise
+  #   unless invite_promocode.blank?
+  #     if User.find_by_promocode(self.invite_promocode).present?
+  #       user2 = User.find_by_promocode(invite_promocode)
+  #       user2.tickets_nb += 1
+  #       user2.save
+  #       raise
+  #     end
+  #   end
+  # end
 
 end
