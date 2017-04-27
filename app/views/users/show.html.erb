@@ -5,7 +5,7 @@
 <div class="user-basic-info">
 
   <% if current_user == @user %>
-  <%= link_to edit_user_path(@user) do %>
+  <%= link_to edit_user_registration_path do %>
 
   <div class="user-edit-button">
     <i class="fa fa-pencil pencil" aria-hidden="true"></i>
@@ -44,18 +44,20 @@
   <i class="fa fa-envelope-o" aria-hidden="true"></i> <%= @user.email %>
   <br>
   <br>
+  <% if @user.phone %>
+  <i class="fa fa-phone" aria-hidden="true"></i> <%= @user.phone %>
+  <br>
+  <% end %>
+  <br>
+  <br>
   <% if @user.company %>
-  <i class="fa fa-location-arrow" aria-hidden="true"></i> <%= @user.company %>
+  <i class="fa fa-home" aria-hidden="true"></i> <%= @user.company %>
   <br>
   <br>
   <% end %>
   <% if @user.role %>
-  <i class="fa fa-location-arrow" aria-hidden="true"></i> <%= @user.company %>
+  <i class="fa fa-user" aria-hidden="true"></i> <%= @user.role %>
   <br>
-  <br>
-  <% end %>
-  <% if @user.phone %>
-  <i class="fa fa-phone" aria-hidden="true"></i> <%= @user.phone %>
   <br>
   <% end %>
 </div>
