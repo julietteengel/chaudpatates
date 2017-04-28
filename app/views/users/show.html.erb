@@ -72,7 +72,14 @@
   <p> Pas encore de bio!</p>
   <% end %>
 </div>
-<div class="promocode">
+<div class="promocode user-bio">
+
+<% if @user.promocode %>
+  <h4>Code promo :</h4> <%= @user.promocode %>
+  <p>Invitez vos amis à rejoindre la communauté Chaupatate!
+  <br>
+  Lorsqu'un ami utilise votre code promo à l'inscription, vous gagnez des points.</p>
+  <% end %>
 
 </div>
 </div>
