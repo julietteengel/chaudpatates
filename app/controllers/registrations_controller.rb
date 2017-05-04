@@ -5,15 +5,20 @@ before_filter :configure_permitted_parameters, :only => [:create]
     super
   end
 
-  def create
+ def create
     super
     # add custom create logic here
+    resource.save
     build_resource(registration_params)
     unless resource.invite_promocode.blank?
       if User.find_by_promocode(resource.invite_promocode).present?
         user2 = User.find_by_promocode(resource.invite_promocode)
-        user2.tickets_nb += 1
-        user2.save
+        if User.find_by_invite_promocode(resource.invite_promocode).present?
+          if User.where(invite_promocode: resource.invite_promocode).count == 5
+            user2.tickets_nb += 1
+            user2.save
+          end
+        end
       end
     end
   end
