@@ -1,18 +1,9 @@
 <h1>Bonjour <%= @user.first_name %>,</h1>
 
 <p>
-Une séance Chaudpatate a lieu demain dans votre ville! <%= l(@training.date, format: '%A %d %B, à %Hh%M') %>
-Informations complémentaires :
-Training du <%= l(@training.date, format: '%A %d %B, à %Hh%M') %>
-<br>
-<%= @location.address %>
-<br>
-<%= @location.private_description %>
-</p>
-<br>
-<p>Inscrivez-vous vite en cliquant sur le lien suivant :</p>
-<% link_to restaurant_url(@restaurant) %>
 
-<p>A très bientôt !</p>
+
+render
+
 
 <p>Paul de Chaud Patate</p>

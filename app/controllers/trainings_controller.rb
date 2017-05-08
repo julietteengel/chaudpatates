@@ -1,6 +1,6 @@
 class TrainingsController < ApplicationController
   require 'active_support/all'
-	before_action :set_training, only: [:update, :destroy]
+	before_action :set_training, only: [:update, :destroy, :send_order_email]
 	skip_after_action :verify_policy_scoped, :only => :index
 
 	def index
@@ -54,6 +54,10 @@ class TrainingsController < ApplicationController
     redirect_to(trainings_path)
 	end
 
+  def send_order_email
+
+  end
+
 	private
 
   def training_params
@@ -63,5 +67,7 @@ class TrainingsController < ApplicationController
   def set_training
     @training = Training.find(params[:id])
     authorize @training
+  end
+
   end
 end

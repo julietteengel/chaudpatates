@@ -29,7 +29,20 @@ class TrainingMailer < ApplicationMailer
     end
   end
 
+  def send_lastmin_info(training)
+    @training = training
+    @members  = @training.members
+    @members.each do |member|
+      send_lastmin_info_email(member)
+    end
+  end
+
   private
+
+  def send_lastmin_info_email(member)
+    @member = member
+    mail(to: member.email, subject: 'Information de dernière minute!')
+  end
 
   def send_cancellation_email(member)
     @member = member
