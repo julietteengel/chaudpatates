@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @past_events_attended = past_events_attendee(@user)
   end
 
+
+
   # def edit
   #   @user = User.find(params[:id])
   # end

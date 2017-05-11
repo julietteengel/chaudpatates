@@ -69,5 +69,4 @@ class TrainingsController < ApplicationController
     authorize @training
   end
 
-  end
 end
