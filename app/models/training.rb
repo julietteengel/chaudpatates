@@ -69,9 +69,13 @@ class Training < ApplicationRecord
     # BookingMailer.delay_until(training.date - 2.days).upcoming(self)
   end
 
-    def notify_non_member_before_training
+  def notify_non_member_before_training
     TrainingMailer.reminder_if_not_registered(self).deliver_later(wait_until: self.date - 1.day)
     # BookingMailer.delay_until(training.date - 2.days).upcoming(self)
+  end
+
+  def send_lastmin_info
+    TrainingMailer.send_lastmin_info(self).deliver_now
   end
 
 end

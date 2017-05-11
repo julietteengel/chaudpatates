@@ -17,6 +17,9 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :is_coach, inclusion: { in: [true,false] }
   validates :tickets_nb, presence: true, numericality: { only_integer: true }
+  validates :phone,  :presence => {:message => 'Format incorrect'},
+                     :numericality => true,
+                     :allow_blank => true
   # validates_uniqueness_of :promocode
 
   scope :is_coach, -> { where(is_coach: true) }
