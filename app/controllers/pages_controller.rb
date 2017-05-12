@@ -1,16 +1,17 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
-  def home
+def home
     @cities = City.all
     # User.new.add_promocode_to_users_in_db
-        User.where(promocode: :nil).each do |user|
+    @user = User.where(promocode: nil)
+      @user.each do |u|
       self.promocode = loop do
       random_token = SecureRandom.urlsafe_base64(nil, false)
       break random_token unless self.class.exists?(promocode: random_token)
       end
-      user.save
-      UserMailer.send_promocode(self)
+      u.save
+      UserMailer.send_promocode(u)
     end
   end
 
