@@ -90,6 +90,7 @@ class User < ApplicationRecord
       random_token = SecureRandom.urlsafe_base64(nil, false)
       break random_token unless self.class.exists?(promocode: random_token)
       end
+      user.save
       UserMailer.send_promocode(self)
     end
   end
