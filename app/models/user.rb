@@ -84,6 +84,16 @@ class User < ApplicationRecord
     end
   end
 
+  def add_promocode_to_users_in_db
+    User.where(promocode: :nil).each do |user|
+      self.promocode = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless self.class.exists?(promocode: random_token)
+      end
+      UserMailer.send_promocode(self)
+    end
+  end
+
   private
 
   def send_welcome_email

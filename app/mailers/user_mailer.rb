@@ -11,4 +11,9 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Bienvenue sur Chaud Patate')
     # This will render a view in `app/views/user_mailer`!
   end
+
+  def send_promocode(user)
+    @user = user
+    mail(to: @user.email, subject: 'Gagnez une séance gratuite !')
+  end
 end
