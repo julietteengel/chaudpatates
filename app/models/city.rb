@@ -18,6 +18,9 @@ class City < ApplicationRecord
   end
 
   def find_city_members
+    # If you want to include an association (we'll call it bookings) of an already included association
+    # (we'll call it Trainig), you'd use the syntax above. However, if you'd like to include Users as well,
+    # which is also an association of Bookings
     trainings = Training.includes({ bookings: [:user] }).city(self)
     bookings = []
     trainings.each do |training|

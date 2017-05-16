@@ -11,7 +11,7 @@ def home
           break random_token unless u.class.exists?(promocode: random_token)
         end
       u.save
-      UserMailer.send_promocode(u)
+      UserMailer.send_promocode(u).deliver_now
     end
   end
 
