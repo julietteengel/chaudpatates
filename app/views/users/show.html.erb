@@ -74,16 +74,16 @@
 </div>
 <div class="promocode user-bio">
 
-<!--  if @user.promocode %> -->
-<!--   <h4>Code promo :</h4> <%= @user.promocode %> -->
-<!--   <br>
+<% if @user.promocode %>
+  <h4>Code promo :</h4> <%= @user.promocode %>
+  <br>
   <br>
   <b>Invitez vos amis à rejoindre la communauté Chaupatate!</b>
   <br>
   <br>
   Parrainez 5 amis et gagnez une séance gratuite.
   Il suffit à vos amis d'entrer ce code promo dans le formulaire lors de leur inscription.</p>
-  end %> -->
+  <% end %>
 
 </div>
 </div>
