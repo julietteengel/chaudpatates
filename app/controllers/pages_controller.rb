@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
 def home
-    # @cities = City.all
-    # # User.new.add_promocode_to_users_in_db
+    @cities = City.all
+    # User.new.add_promocode_to_users_in_db
     # @users = User.where(promocode: nil)
     #   @users.each do |u|
     #     u.promocode = loop do
