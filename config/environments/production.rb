@@ -1,7 +1,7 @@
 Rails.application.configure do
   config.action_mailer.delivery_method     = :postmark
   config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
-  config.action_mailer.default_url_options = { host: ENV['http://www.chaudpatate.org'] } # so you need a HOST key in application.yml
+  config.action_mailer.default_url_options = { host: ENV['chaudpatate-live.heroku.com'] } # so you need a HOST key in application.yml
   # HOST can be "your_app.herokuapp.com" or your custom domain name eg. "www.yourdomain.com"
   # ...
   config.action_mailer.perform_caching = false
