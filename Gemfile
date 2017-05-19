@@ -27,7 +27,7 @@ gem "gmaps4rails"
 gem 'rack-canonical-host'
 gem 'rails_12factor'
 gem 'has_secure_token'
-gem "postmark-rails"
+# gem "postmark-rails"
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

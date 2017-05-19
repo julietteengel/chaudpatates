@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170427181510) do
     t.float    "longitude"
     t.text     "public_description"
     t.text     "private_description"
+    # site internet, adresse mail de contact, numero de tel
   end
 
   create_table "orders", force: :cascade do |t|
