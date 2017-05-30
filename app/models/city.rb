@@ -1,4 +1,6 @@
 class City < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   belongs_to :user
   has_many :sessions, dependent: :destroy
   has_many :trainings, dependent: :destroy
@@ -9,6 +11,7 @@ class City < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :photo, presence: true
   validates :user_id, presence: true
+
 
   has_attachment :photo
 
@@ -38,6 +41,5 @@ class City < ApplicationRecord
     end
     trainings
   end
-
 
 end

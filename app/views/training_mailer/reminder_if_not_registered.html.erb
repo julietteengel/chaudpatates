@@ -7,3 +7,22 @@ render
 
 
 <p>Paul de Chaud Patate</p>
+
+
+
+<h1>Bonjour <%= @user.first_name %>,</h1>
+
+<p>
+Une séance ChaudPatate a lieu demain dans votre ville!
+Informations complémentaires :
+<%= @location.address %>
+<br>
+<%= @location.private_description %>
+</p>
+Niveau du training : <%= training.level %>
+Training <%= training.inoutdoor %>
+
+
+<p>A bientôt!</p>
+
+<p>Paul de Chaud Patate</p>
