@@ -51,7 +51,6 @@ class BookingsController < ApplicationController
 
 	def destroy
 		if (Time.current < @booking.training.date - 1.day) && @booking.destroy
-      raise
 			current_user.tickets_nb += 1
 			current_user.save
       respond_to do |format|

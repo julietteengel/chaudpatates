@@ -62,6 +62,7 @@
                   <%= cl_image_tag @next_location.photo.path, width: 120, height: 120, crop: :fill, class: "avatar-huge" %>
                   <div>
                     <h4><%= @next_location.name %></h4>
+                    <p><%= @city.next_trainings(1).date.strftime("%d-%m-%Y, %H:%M ") %></p>
                     <p>
                       <a href="#map" class="anchor-map">
                         <i class="fa fa-map-o" aria-hidden="true"></i>
