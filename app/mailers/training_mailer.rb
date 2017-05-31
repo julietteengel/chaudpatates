@@ -16,33 +16,33 @@ class TrainingMailer < ApplicationMailer
     end
   end
 
-  def reminder_if_not_registered(training)
-    @training = training
-    @members  = @training.members
-    @user = user
-    @users = User.all
-    # if user is in city and is not registered to this training
-    @users.each do |u|
-      if @members.exclude? u && u.city == @training.city # éventuellement : rajouter, and if training is not full
-        send_reminder_if_not_registered(u)
-      end
-    end
-  end
+  # def reminder_all_trainings(training)
+  #   @training = training
+  #   @members  = @training.members
+  #   @user = user
+  #   @users = User.all
+  #   # if user is in city and is not registered to this training
+  #   @users.each do |u|
+  #     if @members.exclude? u && u.city == @training.city # éventuellement : rajouter, and if training is not full
+  #       send_reminder_all_trainings(u)
+  #     end
+  #   end
+  # end
 
-  def send_lastmin_info(training)
-    @training = training
-    @members  = @training.members
-    @members.each do |member|
-      send_lastmin_info_email(member)
-    end
-  end
+  # def send_lastmin_info(training)
+  #   @training = training
+  #   @members  = @training.members
+  #   @members.each do |member|
+  #     send_lastmin_info_email(member)
+  #   end
+  # end
 
   private
 
-  def send_lastmin_info_email(member)
-    @member = member
-    mail(to: member.email, subject: 'Information de dernière minute!')
-  end
+  # def send_lastmin_info_email(member)
+  #   @member = member
+  #   mail(to: member.email, subject: 'Information de dernière minute!')
+  # end
 
   def send_cancellation_email(member)
     @member = member
@@ -52,12 +52,13 @@ class TrainingMailer < ApplicationMailer
 
 def send_reminder_if_registered(member)
     @member = member
+    date = @training.date.strftime('%A %d %Y')
     mail(to: member.email, subject: 'Votre entrainement a lieu aujourd\'hui!')
   end
 
-  def send_reminder_if_not_registered(user)
-    @user = user
-    mail(to: @user.email, subject: 'Un entrainement a lieu aujourd\'hui dans votre ville!')
-  end
+  # def send_reminder_if_not_registered(user)
+  #   @user = user
+  #   mail(to: @user.email, subject: 'Un entrainement a lieu aujourd\'hui dans votre ville!')
+  # end
 
 end
