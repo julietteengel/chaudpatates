@@ -17,6 +17,7 @@ class Training < ApplicationRecord
 
   scope :session_is, -> (session) { where(session: session) }
   scope :past, -> { where("date < ?", (Time.now)) }
+  scope :upcoming_plus_30min, -> { where("date >= ?", (Time.now - 30.minutes)) }
   scope :upcoming, -> { where("date >= ?", (Time.now + 1.hours)) }
   scope :city, -> (city) { where( city: city) }
 
