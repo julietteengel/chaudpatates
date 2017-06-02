@@ -42,4 +42,12 @@ class City < ApplicationRecord
     trainings
   end
 
+  def send_reminder_all_trainings(member)
+    @member = member
+    # @trainings = @city.trainings.week.order(:date)
+    @trainings = self.next_trainings(6)
+    # date = @training.date.strftime('%A %d %Y')
+    UserMailer.reminder_all_trainings(member).deliver_now
+end
+
 end

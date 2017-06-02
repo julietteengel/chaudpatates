@@ -20,6 +20,7 @@ class Training < ApplicationRecord
   scope :upcoming_plus_30min, -> { where("date >= ?", (Time.now - 30.minutes)) }
   scope :upcoming, -> { where("date >= ?", (Time.now + 1.hours)) }
   scope :city, -> (city) { where( city: city) }
+  scope :week, -> { where("date >= ?", (Time.now) && "date < ?", (Time.now + 7.days)) }
 
   has_attachment :photo
 
