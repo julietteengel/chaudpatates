@@ -47,7 +47,7 @@ class City < ApplicationRecord
     # @trainings = @city.trainings.week.order(:date)
     @trainings = self.next_trainings(6)
     # date = @training.date.strftime('%A %d %Y')
-    UserMailer.reminder_all_trainings(member).deliver_now
+    TrainingMailer.reminder_all_trainings(member).deliver_now
 end
 
 end

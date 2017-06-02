@@ -16,6 +16,17 @@ class TrainingMailer < ApplicationMailer
     end
   end
 
+  def reminder_all_trainings(user)
+    @user = user
+    @city = @user.city
+    # @trainings = self.next_trainings(6)
+    # @member = member
+    # @city_members = c.find_city_members
+    @trainings = @city.trainings.week.order(:date)
+    # date = @training.date.strftime('%A %d %Y')
+    mail(to: @user.email, subject: 'Les entraînements de la semaine dans votre ville!')
+end
+
   # def reminder_all_trainings(training)
   #   @training = training
   #   @members  = @training.members
@@ -55,6 +66,8 @@ def send_reminder_if_registered(member)
     date = @training.date.strftime('%A %d %Y')
     mail(to: member.email, subject: 'Votre entrainement a lieu aujourd\'hui!')
   end
+
+
 
   # def send_reminder_if_not_registered(user)
   #   @user = user
