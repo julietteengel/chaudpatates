@@ -7,7 +7,7 @@
           @city_members.each do |city_member|
             c.send_reminder_all_trainings(city_member)
             end
+        end
       end
     end
-      end
-     end
+  end

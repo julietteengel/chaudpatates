@@ -19,9 +19,6 @@ class TrainingMailer < ApplicationMailer
   def reminder_all_trainings(user)
     @user = user
     @city = @user.city
-    # @trainings = self.next_trainings(6)
-    # @member = member
-    # @city_members = c.find_city_members
     @trainings = @city.trainings.week.order(:date)
     # date = @training.date.strftime('%A %d %Y')
     mail(to: @user.email, subject: 'Les entraînements de la semaine dans votre ville!')
