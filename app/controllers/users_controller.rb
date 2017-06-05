@@ -7,6 +7,14 @@ class UsersController < ApplicationController
     # Display the public profile of a specific user
     @user = User.find(params[:id])
     @past_events_attended = past_events_attendee(@user)
+    if @user.invite_promocode.nil?
+      @count_parrainages = 0
+      elsif @user.promocode = nil
+        @count_parrainages = 0
+      else
+      @count_parrainages = User.where(invite_promocode: @user.promocode).count
+    end
+
   end
 
 
@@ -27,6 +35,7 @@ class UsersController < ApplicationController
   # end
 
 private
+
 
   def past_events_attendee(user)
     @user.bookings.past
