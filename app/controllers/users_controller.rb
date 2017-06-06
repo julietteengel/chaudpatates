@@ -11,7 +11,6 @@ class UsersController < ApplicationController
         @count_parrainages = 0
       else
       @count_parrainages = (User.where.not(invite_promocode: nil).where(invite_promocode: @user.promocode)).count
-      raise
     end
 
   end
