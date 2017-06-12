@@ -19,10 +19,10 @@ class TrainingMailer < ApplicationMailer
   def reminder_all_trainings(user)
     @user = user
     @city = @user.city
-    @trainings = @city.trainings.week.order(:date)
+    @trainings = @city.trainings.week.order('date DESC')
     # date = @training.date.strftime('%A %d %Y')
     mail(to: @user.email, subject: 'Les entraînements de la semaine dans votre ville!')
-end
+  end
 
   # def reminder_all_trainings(training)
   #   @training = training
@@ -58,7 +58,7 @@ end
     mail(to: member.email, subject: 'Annulation de l\'entrainement')
   end
 
-def send_reminder_if_registered(member)
+  def send_reminder_if_registered(member)
     @member = member
     date = @training.date.strftime('%A %d %Y')
     mail(to: member.email, subject: 'Votre entrainement a lieu aujourd\'hui!')

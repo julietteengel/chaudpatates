@@ -1,2 +1,17 @@
-Les entraînements de cette semaine à <%= @city.name %>
-<%= @trainings %>
+<h1>Bonjour <%= @user.first_name %>,</h1>
+
+<p>Inscris-toi dès maintenant aux entraînements de cette semaine à <%= @city.name %> !</p>
+
+<p>Tous les entraînements de la semaine :</p>
+<ul>
+<% @trainings.each do |training| %>
+  <li>Le <%= l(training.date, format: '%A %d %B, à %Hh%M') %>, à <%= training.location.name  %>, <%=  training.location.address %></li>
+
+<% end %>
+</ul>
+
+<%= link_to "Je m'inscris à une session !", city_url(@city) %>
+
+<p>A très bientôt !</p>
+
+<p>Paul de Chaud Patate</p>

@@ -43,7 +43,7 @@ class City < ApplicationRecord
   end
 
   def send_reminder_all_trainings(member)
-    TrainingMailer.reminder_all_trainings(member).deliver_later
+    TrainingMailer.reminder_all_trainings(member).deliver_now
 end
 
 end
