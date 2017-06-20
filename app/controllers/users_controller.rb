@@ -7,11 +7,11 @@ class UsersController < ApplicationController
     # Display the public profile of a specific user
     @user = User.find(params[:id])
     @past_events_attended = past_events_attendee(@user)
-    #   if @user.promocode = nil
-    #     @count_parrainages = 0
-    #   else
-    #   @count_parrainages = User.where(invite_promocode: @user.promocode).count
-    # end
+      if @user.promocode.nil?
+        @count_parrainages = 0
+      else
+      @count_parrainages = User.where(invite_promocode: @user.promocode).count
+    end
 
   end
 

@@ -1,0 +1,17 @@
+Bonjour <%= @user.first_name %>,
+
+Inscris-toi dès maintenant aux entraînements de cette semaine à <%= @city.name %> !
+
+Tous les entraînements de la semaine :
+
+<% @trainings.each do |training| %>
+  Le <%= l(training.date, format: '%A %d %B, à %Hh%M') %>, à <%= training.location.name  %>, <%=  training.location.address %>
+
+<% end %>
+
+
+<%= link_to "Je m'inscris à une session !", city_url(@city) %>
+
+A très bientôt !
+
+Paul de Chaud Patate
