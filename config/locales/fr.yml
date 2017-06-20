@@ -1,4 +1,10 @@
 fr:
+  users:
+    show:
+      count_parrainages:
+        zero:  'utilisateur'
+        one: ' un utilisateur'
+        other: '%{count} utilisateurs'
   activerecord:
     models:
       user:
