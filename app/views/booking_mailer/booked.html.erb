@@ -1,25 +1,59 @@
-<h1>Bonjour <%= @booking.user.first_name %>,</h1>
+<!-- Content Zone -->
+<tr>
+  <td width="600" bgcolor="#FFFFFF">
+    <tr>
+      <td width="600" height="15" bgcolor="#ffffff" style="background-color: #ffffff"></td>
+    </tr>
 
-<p>
-  Votre inscription à l'entraînement du <%= l(@booking.training.date, format: '%A %d %B, à %Hh%M')%> a bien été enregistrée.
-  <% if @booking.training.location %>
-    L'adresse de départ : <%= @booking.training.location.name %></br><%= @booking.training.location.address %>. <br>
-    Informations complémentaires : <br>
-    <%= @booking.training.location.private_description %>
-  <% else %>
-    Le lieu de départ n'a pas encore été communiqué mais il sera affiché sur la page de votre ville plus tard.
-  <% end %>
-  <br>
-  Votre coach <%= @booking.training.city.coach.first_name %> sera là pour vous accueillir.
-</p>
+    <table cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" width="600" style="font-family: 'Open Sans', 'Helvetica', 'sans-serif'; font-size: 16px; line-height: 24px; color: #555555; width: 600px">
+      <tr>
+        <td width="80"></td>
+        <td width="440">
+          <div>
+            <h1>Bonjour <%= @booking.user.first_name %>,</h1>
 
-<p>
-Pour voir tous vos entraînements à venir, rendez-vous sur <%= link_to "Mes entraînements à venir", bookings_url %>.
-</p>
+            <p>
+            Votre inscription à l'entraînement du <strong> <%= l(@booking.training.date, format: '%A %d %B, à %Hh%M')%> </strong> a bien été enregistrée.
 
-<p>
-A très bientôt,
-</p>
-<p>
-Paul de Chaud Patate
-</p>
+              <br>
+              <% if @booking.training.location %>
+              L'adresse de départ : <strong> <%= @booking.training.location.name %></br><%= @booking.training.location.address %>. </strong> <br>
+              <br>
+              Informations complémentaires : <br>
+              <%= @booking.training.location.private_description %>
+              <% else %>
+              Le lieu de départ n'a pas encore été communiqué mais il sera affiché sur la page de votre ville plus tard.
+              <% end %>
+              <br>
+              Votre coach <%= @booking.training.city.coach.first_name %> sera là pour vous accueillir.
+              <br>
+              <br>
+
+            </div>
+          </td>
+        </tr>
+        <br>
+        <br>
+        <tr>
+          <td width="80"></td>
+          <td width="440">
+            <table style="text-align: center; width: 200px;" width="200" border="0" cellpadding="0" cellspacing="0" align="center">
+              <tbody>
+                <tr>
+                  <p> Pour voir tous vos entraînements à venir, rendez-vous sur <%= link_to "Mes entraînements à venir", bookings_url %>.
+                    <br>
+                    <br>
+                  </p> A très bientôt,
+                </p>
+                <p>
+                  Paul de Chaud Patate
+                </p>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+
+
+      </tr>
+
+
