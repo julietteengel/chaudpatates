@@ -1,6 +1,5 @@
 class City < ApplicationRecord
-  extend FriendlyId
-  friendly_id :name, use: :slugged
+
   belongs_to :user
   has_many :sessions, dependent: :destroy
   has_many :trainings, dependent: :destroy

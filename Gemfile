@@ -28,7 +28,6 @@ gem 'rack-canonical-host'
 gem 'rails_12factor'
 gem 'has_secure_token'
 gem "postmark-rails"
-gem 'friendly_id', '~> 5.1.0'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

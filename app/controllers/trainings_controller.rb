@@ -11,6 +11,7 @@ class TrainingsController < ApplicationController
     else
 			@trainings = Training.all
 		end
+    authorize @trainings
 	end
 
   def new
