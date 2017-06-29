@@ -5,8 +5,10 @@ class TrainingsController < ApplicationController
 
 	def index
 		if current_user.is_coach
+      if current_user.city
 			@trainings = current_user.city.trainings.upcoming_plus_30min.order(:date).includes(:location)
-		else
+		  end
+    else
 			@trainings = Training.all
 		end
     authorize @trainings
