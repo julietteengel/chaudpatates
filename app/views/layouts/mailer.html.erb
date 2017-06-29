@@ -1,28 +1,11 @@
 <html>
   <body>
-    <table cellspacing="0" cellpadding="0" border="0">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <!-- margin-top -->
-      <tr>
-        <td width="600" height="20"></td>
-      </tr>
-      <tr>
-        <td width="600" height="40" bgcolor="#FFFFFF" style="background-color: #FFFFFF"></td>
-      </tr>
+
       <!-- Logo zone -->
 
-      <tr>
-        <td width="600" bgcolor="#FFFFFF">
-          <table cellspacing="0" cellpadding="0" width="100" border="0" bgcolor="#FFFFFF" align="center">
-            <tr>
-              <td width="100" valign="middle">
-                <%= link_to root_url, style: "display: block; text-align: center;" do %>
-                  <%= image_tag("logo.png", style: "width: 135px; text-decoration: none; display: block; color:#476688; font-size:30px;", alt: "",) %>
-                <% end %>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
+
 
       <%= yield %>
 
