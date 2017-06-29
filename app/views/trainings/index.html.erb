@@ -4,7 +4,7 @@
       <div class="listing bookings text-center">
         <h2>Vos entraînements à venir</h2>
           <%= link_to "En créer un nouveau", new_training_path, class: "btn-success btn btn-lg spaced-bottom" %>
-          <% @trainings.upcoming.each do |training| %>
+          <% @trainings.each do |training| %>
             <%= render 'trainings/show', training: training %>
           <% end %>
       </div>

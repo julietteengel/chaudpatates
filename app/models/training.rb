@@ -53,6 +53,11 @@ class Training < ApplicationRecord
     return members
   end
 
+  def next_trainings(number)
+    r = self.includes(:location).upcoming_plus_30min.city(self).order(:date).first(number)
+    r.length == 1 ? r.first : r
+  end
+
   # def date_has_to_be_in_session
   # 	sessions_day = []
   # 	city.sessions.each { |session| sessions_day << session.day }
