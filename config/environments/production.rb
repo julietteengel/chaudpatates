@@ -6,7 +6,7 @@ Rails.application.configure do
   # HOST can be "your_app.herokuapp.com" or your custom domain name eg. "www.yourdomain.com"
   # ...
   config.action_mailer.perform_caching = false
-  config.action_mailer.asset_host = 'http://' + ENV["HOST"]
+  config.action_mailer.asset_host = 'http://chaudpatates-staging.herokuapp.com'
 
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.default_url_options = { host: "http://www.chaudpatate.org" }
