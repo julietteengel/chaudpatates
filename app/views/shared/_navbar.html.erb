@@ -15,7 +15,7 @@
             <ul class="">
               <!--  <li><h4>Nord-Ouest</h4></li> -->
               <% City.all.each do |c| %>
-                <li><%= link_to c.name, city_path(c) %></li>
+                <li><%= link_to c.name, city_path(c.name.downcase) %></li>
               <% end %>
             </ul>
             <ul class="">

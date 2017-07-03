@@ -16,7 +16,7 @@ class CitiesController < ApplicationController
 	private
 
 	def set_city
-		@city = City.includes(:sessions).friendly.find(params[:id])
+		@city = City.includes(:sessions).find_by_slug(params[:slug])
 		authorize @city
 	end
 

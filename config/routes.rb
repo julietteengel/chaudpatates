@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   	controllers: { omniauth_callbacks: 'users/omniauth_callbacks', :registrations => "registrations" }
   resources :users, only: [:show]
 
-  resources :cities, only: [:show]
+  resources :cities, only: [:show] do
+    get "/:slug" => "cities#show", on: :collection
+  end
+
   resources :trainings, only: [:index, :new, :create, :update, :destroy]
   resources :bookings, only: [:index, :create, :destroy]
   resources :orders, only: [:create] do
