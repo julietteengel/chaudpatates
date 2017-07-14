@@ -8,7 +8,9 @@ task :create_weekly_trainings => :environment do
 end
 
 task :reminder_email => :environment do
-  if Time.current.monday? # previous answer: Date.today.wday == 5
+  if Time.current.friday? # previous answer: Date.today.wday == 5
+    puts "Sending emails..."
     Rake::Task['reminder_all_trainings:reminder_email'].invoke
+    puts "Emails sent"
   end
 end
