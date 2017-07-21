@@ -1,0 +1,2 @@
+module SuscribersHelper
+end

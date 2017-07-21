@@ -13,6 +13,8 @@ City.destroy_all
 User.destroy_all
 Session.destroy_all
 TicketsPackage.destroy_all
+Plan.destroy_all
+Stripe::Plan.destroy_all
 
 usain = User.create!(
   email: "usain@mail.com",
@@ -138,3 +140,26 @@ ticket_by_10 = TicketsPackage.create!(
 	tickets_nb: 10
 	)
 
+
+plan1 = Stripe::Plan.create(
+  :amount => 2400,
+  :interval => 'month',
+  :name => 'Abonnement mensuel',
+  :currency => 'eur',
+  :id => 'monthly'
+)
+
+Plan.create(name: plan.name, stripe_id: plan1.id, display_price: (plan.amount.to_f / 100))
+
+plan2 = Stripe::Plan.create(
+  :amount => 25000,
+  :interval => 'month',
+  :name => 'Abonnement annuel',
+  :currency => 'eur',
+  :id => 'yearly'
+)
+
+Plan.create(name: plan.name, stripe_id: plan2.id, display_price: (plan.amount.to_f / 100))
+
+p plan1
+p plan2

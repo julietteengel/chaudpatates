@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
 	before_action :set_ticket, only: [ :create ]
+  skip_after_action :verify_policy_scoped, :only => :index
+
+  def index
+  end
 
 	def create
 		create_order
@@ -39,6 +43,7 @@ class OrdersController < ApplicationController
 	    email:  params[:stripeEmail]
 	  )
 	  current_user.customer_id = @customer.id
+    current_user.suscribed = true
 	end
 
 	def charge_customer
