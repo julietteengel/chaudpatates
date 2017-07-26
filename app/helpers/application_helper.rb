@@ -7,3 +7,18 @@ module ApplicationHelper
 		wday_from_name[day]
 	end
 end
+
+module ApplicationHelper
+  include Koudoku::ApplicationHelper
+end
+
+
+# module ApplicationHelper
+#   module Rails
+#     class Engine < ::Rails::Engine
+#       initializer :set_decorator_paths, :before => :load_environment_hook do |app|
+#         ActiveSupportDecorators.paths << File.join(config.root, 'app/**')
+#       end
+#     end
+#   end
+# end

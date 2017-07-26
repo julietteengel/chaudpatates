@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  
+  # Added by Koudoku.
+  mount Koudoku::Engine, at: 'koudoku'
+  scope module: 'koudoku' do
+    get 'pricing' => 'subscriptions#index', as: 'pricing'
+  end
+
+
 	require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'

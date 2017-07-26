@@ -139,26 +139,44 @@ ticket_by_10 = TicketsPackage.create!(
 	tickets_nb: 10
 	)
 
+Plan.create({
+      name: 'Abonnement mensuel',
+      price: 24.00,
+      interval: 'month',
+      highlight: true,
+      stripe_id: '3_months_subscription',
+      features: ['Séances illimitées', 'Engagement sur 3 mois'].join("\n\n"),
+      display_order: 1
+    })
 
-plan1 = Stripe::Plan.create(
-  :amount => 2400,
-  :interval => 'month',
-  :name => 'Abonnement mensuel',
-  :currency => 'eur',
-  :id => 'monthly'
-)
+    Plan.create({
+      name: 'Abonnement annuel',
+      price: 250.00,
+      interval: 'year',
+      stripe_id: '1_year_subscription',
+      features: ['Un an de séances illimitées'].join("\n\n"),
+      display_order: 2
+    })
 
-Plan.create(name: plan.name, stripe_id: plan1.id, display_price: (plan.amount.to_f / 100))
+# plan1 = Plan.create(
+#   :amount => 2400,
+#   :interval => 'month',
+#   :name => 'Abonnement mensuel',
+#   :currency => 'eur',
+#   :id => 'monthly'
+# )
 
-plan2 = Stripe::Plan.create(
-  :amount => 25000,
-  :interval => 'month',
-  :name => 'Abonnement annuel',
-  :currency => 'eur',
-  :id => 'yearly'
-)
+# Plan.create(name: plan.name, stripe_id: plan1.id, display_price: (plan.amount.to_f / 100))
 
-Plan.create(name: plan.name, stripe_id: plan2.id, display_price: (plan.amount.to_f / 100))
+# plan2 = Stripe::Plan.create(
+#   :amount => 25000,
+#   :interval => 'month',
+#   :name => 'Abonnement annuel',
+#   :currency => 'eur',
+#   :id => 'yearly'
+# )
 
-p plan1
-p plan2
+# Plan.create(name: plan.name, stripe_id: plan2.id, display_price: (plan.amount.to_f / 100))
+
+# p plan1
+# p plan2

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721083134) do
+ActiveRecord::Schema.define(version: 20170726041450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 20170721083134) do
     t.index ["user_id"], name: "index_cities_on_user_id", using: :btree
   end
 
+  create_table "coupons", force: :cascade do |t|
+    t.string   "code"
+    t.string   "free_trial_length"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -100,9 +107,13 @@ ActiveRecord::Schema.define(version: 20170721083134) do
   end
 
   create_table "plans", force: :cascade do |t|
-    t.string   "stripe_id",     null: false
-    t.string   "name",          null: false
-    t.decimal  "display_price", null: false
+    t.string   "name"
+    t.string   "stripe_id"
+    t.float    "price"
+    t.string   "interval"
+    t.text     "features"
+    t.boolean  "highlight"
+    t.integer  "display_order"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -114,6 +125,18 @@ ActiveRecord::Schema.define(version: 20170721083134) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["city_id"], name: "index_sessions_on_city_id", using: :btree
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string   "stripe_id"
+    t.integer  "plan_id"
+    t.string   "last_four"
+    t.integer  "coupon_id"
+    t.string   "card_type"
+    t.float    "current_price"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "tickets_packages", force: :cascade do |t|
@@ -139,23 +162,23 @@ ActiveRecord::Schema.define(version: 20170721083134) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                   default: "",    null: false
-    t.string   "encrypted_password",      default: "",    null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "tickets_nb",              default: 1
-    t.boolean  "is_coach",                default: false
-    t.boolean  "admin",                   default: false
+    t.integer  "tickets_nb",             default: 1
+    t.boolean  "is_coach",               default: false
+    t.boolean  "admin",                  default: false
     t.string   "provider"
     t.string   "uid"
     t.string   "headline"
@@ -168,14 +191,10 @@ ActiveRecord::Schema.define(version: 20170721083134) do
     t.string   "promocode"
     t.string   "bio"
     t.string   "phone"
-    t.text     "badges",                  default: [],                 array: true
+    t.text     "badges",                 default: [],                 array: true
     t.text     "company"
     t.text     "role"
     t.string   "invite_promocode"
-    t.boolean  "suscribed",               default: false
-    t.integer  "plan_id"
-    t.datetime "subscribed_at"
-    t.datetime "subscription_expires_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

@@ -5,7 +5,7 @@
   </div>
 
   <div class="navbar-wagon-item">
-    <%= form_tag orders_path do %>
+    <%= form_tag main_app.orders_path do %>
     <%= hidden_field_tag 'tickets_package_id', @tickets_package.id %>
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -27,28 +27,28 @@
   <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
     <% if user_signed_in? %>
     <% if current_user.is_coach %>
-    <li><%= link_to 'Gérer ma ville', trainings_path, class: "navbar-wagon-link" %></li>
+    <li><%= link_to 'Gérer ma ville', main_app.trainings_path, class: "navbar-wagon-link" %></li>
     <% else %>
-    <li><%= link_to 'Mes entraînements à venir', bookings_path %></li>
+    <li><%= link_to 'Mes entraînements à venir', main_app.bookings_path %></li>
     <% end %>
     <li>
-      <%= link_to user_path(current_user) do %>
+      <%= link_to main_app.user_path(current_user) do %>
       Mon profil
       <% end %>
     </li>
     <li>
-      <%= link_to destroy_user_session_path, method: :delete do %>
+      <%= link_to main_app.destroy_user_session_path, method: :delete do %>
       <%= t "shared.navbar.sign_out", default: "Me déconnecter" %>
       <% end %>
     </li>
     <% else %>
     <li>
       <!-- Login text link -->
-      <%= link_to "Me connecter", new_user_session_path %>
+      <%= link_to "Me connecter", main_app.new_user_session_path %>
     </li>
     <li>
       <!-- Signup text link -->
-      <%= link_to "M'inscrire", new_user_registration_path %>
+      <%= link_to "M'inscrire", main_app.new_user_registration_path %>
     </li>
     <% end %>
   </ul>

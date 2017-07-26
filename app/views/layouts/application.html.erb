@@ -24,6 +24,7 @@
     <meta property="twitter:image:src" content="<%= yield(:photo).presence || "#{image_path("background_2.jpg")}" %>">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= favicon_link_tag 'logo.png', type: 'image/png' %>
+    <%= yield :koudoku %>
   </head>
   <body class='<%= "#{params[:controller]}-#{params[:action]}".gsub('/', '-') %>'>
     <%= render 'shared/navbar' %>
