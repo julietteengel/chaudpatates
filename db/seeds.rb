@@ -14,7 +14,6 @@ User.destroy_all
 Session.destroy_all
 TicketsPackage.destroy_all
 Plan.destroy_all
-Stripe::Plan.destroy_all
 
 usain = User.create!(
   email: "usain@mail.com",
