@@ -1,4 +1,65 @@
 fr:
+  koudoku:
+    plan_difference:
+      downgrade: "Changer d'abonnement"
+      selected: "Selectionné"
+      start_trial: "Commencer la période d'essai"
+      upgrade: "Changer d'abonnement"
+    confirmations:
+      feature_depends_on_devise: "Cette feature dépend de Devise pour l'authentification."
+      subscription_cancelled: "Votre souscription a été annulée."
+      subscription_updated: "Votre abonnement a été mis à jour."
+      subscription_upgraded: "Votre abonnement a été mis à jour."
+    failure:
+      problem_processing_transaction: "Nous avons rencontré un problème lors de la transaction."
+      unauthorized: "Non autorisé."
+    plan_intervals:
+      month: "mois"
+      year: "an"
+      week: "semaine"
+      6month: "semestre"
+      3month: "trimestre"
+    payment:
+      cancel: "Annuler"
+      card_number: "Numéro de carte bleue"
+      card_on_file_with_last_four: "La carte enregistrée pour votre compte finit par %{last_four}."
+      cvc: "CVC"
+      expiration: "Expire le (MM/YYYY)"
+      payment_information: "Information de paiement"
+      save_billing_info: "Sauver les informations bancaires"
+      upgrade_account: "Changer d'abonnement"
+      update_payment_information: "Mettre à jour les informations bancaires"
+    social_proof:
+      testimonial1:
+        person: "Person at Place"
+        quote: "\"Some Great Quote\""
+      testimonial2:
+        person: "Person at Place"
+        quote: "\"This is a great service and you've been the best ever! Thanks!\""
+      testimonial3:
+        person: "Person at Place"
+        quote: "\"I love you guys and you're the best! You're the best!\""
+    subscriptions:
+      cancel_your_subscription: "Annuler la souscription"
+      cancel_your_subscription_note_html: "Vous pouvez aussi %{link}."
+      choose_other_plan: "Choisir un nouvel abonnement"
+      choose_plan: "Choisir un abonnement"
+      free_trial_for_days: "%{days} jours d'essai offerts"
+      no_subscription: "Aucune souscription"
+      not_subscribed_to_plan: "Aucun abonnement pour le moment."
+      sign_up: "S'inscire"
+      start_trial: "Commencer votre essai gratuit"
+      subscribed: "Vous êtes inscrit!"
+      subscribed_to_plan: "Vous êtes abonné à: %{plan}."
+      upgrade_your_account: "Mettre à jour votre compte"
+      which_plan_is_best: "What Plan Is Best For You?"
+
+
+
+
+
+
+
   users:
     show:
       count_parrainages:

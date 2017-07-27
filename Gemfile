@@ -29,7 +29,6 @@ gem 'rails_12factor'
 gem 'has_secure_token'
 gem "postmark-rails"
 gem 'koudoku', :git => 'git://github.com/julietteengel/koudoku'
-gem 'activesupport-decorators', '~> 2.1'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

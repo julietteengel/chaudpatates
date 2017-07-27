@@ -1,4 +1,26 @@
+<% content_for(:title) do %>
+  Chaudpatate, le rendez-vous sportif des startupers
+<% end %>
 
+<% content_for(:description) do %>
+  Chaud Patate te permet de faire du sport tout en rencontrant d'autres startupers !
+<% end %>
+
+
+<div class="container padded">
+  <div class='row'>
+  <h2 class="text-center spaced-bottom spaced-top">
+    Entraînez-vous tout en faisant du networking avec Chaudpatate!
+  </h2>
+  </div>
+  <br>
+  <%= button_to main_app.pricing_path, {method: 'get', class: "btn-stripe stripe-button-el"} do %>
+  Créer ou changer votre abonnement
+<% end %>
+<br>
+OU
+<br>
+<div>
         <%= form_tag orders_path do %>
             <%= hidden_field_tag 'tickets_package_id', @tickets_package.id %>
             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -6,13 +28,13 @@
               data-image="http://res.cloudinary.com/ind-pendant/image/upload/v1477414806/logo_jieaz6.jpg"
               data-locale="auto"
               data-email="<%= current_user.email %>"
-              data-label="Acheter des séances one-shot"
+              data-label="Acheter 10 séances one-shot"
               data-name="<%= @tickets_package.tickets_nb %> tickets Chaud Patate"
               data-description="Pour <%= @tickets_package.tickets_nb %> entraînements avec la team !"
               data-amount="<%= @tickets_package.price_cents %>"
               data-currency="<%= @tickets_package.price.currency %>">
             </script>
           <% end %>
-
-<%= link_to 'See plans pricing', main_app.pricing_path %> %>
+</div>
+</div>
 
