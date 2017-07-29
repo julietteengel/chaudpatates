@@ -24,6 +24,19 @@ class BookingsController < ApplicationController
         format.js
         end
       else
+        # If current_user has a plan
+        @subscription = Subscription.find_by_user_id(@booking.user.id)
+        if @subscription.present?
+          @booking.notify_customer if @booking.save
+           current_user.save
+           respond_to do |format|
+            format.html {
+              flash[:notice] = "Votre réservation a bien été prise en compte !!"
+              redirect_to city_path(params[:city])
+              }
+              format.js
+            end
+        else
 		    if current_user.tickets_nb > 0
           @booking.notify_customer if @booking.save
           @tickets_before_booking = current_user.tickets_nb
