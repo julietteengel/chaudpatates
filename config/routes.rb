@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # Added by Koudoku.
   mount Koudoku::Engine, at: 'koudoku'
   scope module: 'koudoku' do
@@ -32,8 +32,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:create] do
     resources :payments, only: [:create]
   end
-  resources :subscribers
-  post '/stripe/webhooks', to: "stripe#webhooks"
+
+  # post '/stripe/webhooks', to: "stripe#webhooks"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

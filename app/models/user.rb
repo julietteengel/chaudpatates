@@ -117,25 +117,25 @@ class User < ApplicationRecord
   #   end
   # end
 
-  def save_and_make_payment(plan, card_token)
-    self.plan = plan
-    if valid?
-      begin
-        customer = Stripe::Customer.create(
-          source: card_token,
-          plan: plan.stripe_id,
-          email: email,
-        )
-        self.customer_id = customer.id
-        self.plan_id = plan.id
-        save(validate: false)
-      rescue Stripe::CardError => e
-        errors.add :credit_card, e.message
-        false
-      end
-    else
-      false
-    end
-  end
+  # def save_and_make_payment(plan, card_token)
+  #   self.plan = plan
+  #   if valid?
+  #     begin
+  #       customer = Stripe::Customer.create(
+  #         source: card_token,
+  #         plan: plan.stripe_id,
+  #         email: email,
+  #       )
+  #       self.customer_id = customer.id
+  #       self.plan_id = plan.id
+  #       save(validate: false)
+  #     rescue Stripe::CardError => e
+  #       errors.add :credit_card, e.message
+  #       false
+  #     end
+  #   else
+  #     false
+  #   end
+  # end
 
 end
