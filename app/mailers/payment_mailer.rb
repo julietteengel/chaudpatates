@@ -6,13 +6,13 @@ class PaymentMailer < ApplicationMailer
   #   en.user_mailer.welcome.subject
   #
   def subscription_deleted(user)
-    @user = user
-    mail(to: @user.email, subject: 'Subscription Deleted')
+    mail(:to => subscription.user.email, subject: 'Subscription Deleted')
   end
 
-  def payment_succeded(user)
-    @user = user
-    mail(to: @user.email, subject: 'Payment succeded')
+  def payment_succeeded(subscription)
+    # @subscription = subscription
+    # mail(to: @user.email, subject: 'Payment succeeded')
+    mail(:to => subscription.user.email, :subject => "My Subscription Invoice")
   end
 
   def payment_failed(user)
