@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  root to: 'pages#home'
+  get "/pages/:page" => "pages#show"
+
   # Added by Koudoku.
   mount Koudoku::Engine, at: 'koudoku'
   scope module: 'koudoku' do
@@ -14,9 +17,6 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 	mount Attachinary::Engine => "/attachinary"
-
-  root to: 'pages#home'
-  get "/pages/:page" => "pages#show"
 
   devise_for :users,
   	controllers: { omniauth_callbacks: 'users/omniauth_callbacks', :registrations => "registrations" }

@@ -412,6 +412,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   stripe
+  stripe_event
   uglifier
 
 RUBY VERSION
