@@ -4,22 +4,11 @@
     <title><%= yield(:title).blank? ? "Chaud Patate" : yield(:title) %></title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="<%= (yield(:description) || "Chaudpatate, le rendez-vous sportif des startupers").squish %>">
-    <meta property="og:url" content="<%= yield(:url).presence || "https://www.chaudpatate.org/" %>">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:title"  content="<%= yield(:title).presence || "Chaud Patate" %>">
-    <meta property="og:image" content="<%= yield(:photo).presence || "#{image_path("background_2.jpg")}" %>">
-    <meta name="og:description" content="<%= (yield(:description) || "Chaudpatate, le rendez-vous sportif des startupers").squish %>">
-    <meta property="og:site_name" content="Chaud Patate">
-    <meta name="twitter:site" content="@ChaudPatate75">
-    <meta property="twitter:title"  content="<%= yield(:title).presence || "Chaudpatate" %>">
-    <meta name="twitter:description" content="<%= (yield(:description) || "Chaudpatate, le rendez-vous sportif des startupers").squish %>">
-    <meta name="twitter:creator" content="@ChaudPatate75">
-    <meta property="twitter:image:src" content="<%= yield(:photo).presence || "#{image_path("background_2.jpg")}" %>">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= favicon_link_tag 'logo.png', type: 'image/png' %>
+    <%= javascript_include_tag 'application' %>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <%= yield(:koudoku) %>
   </head>
   <body class='<%= "#{params[:controller]}-#{params[:action]}".gsub('/', '-') %>'>
     <%= render 'shared/navbar' %>
@@ -29,7 +18,6 @@
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
-    <%= javascript_include_tag 'application' %>
     <%= yield(:after_js) %>
     <%= cloudinary_js_config %>
   </body>

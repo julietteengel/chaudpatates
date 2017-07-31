@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+# Added by Koudoku.
+  has_one :subscription
+
   include Tokenable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -6,6 +9,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:linkedin]
 
   has_one :city
+  belongs_to :plan
   has_many :bookings, dependent: :destroy
   has_many :order
   has_attachment :photo
@@ -84,6 +88,15 @@ class User < ApplicationRecord
     end
   end
 
+  def subscribed?
+    @subscription = Subscription.find_by_user_id(self.id)
+    if @subscription.present? && @subscription.plan_id.present?
+      true
+    else
+      false
+    end
+  end
+
   # def add_promocode_to_users_in_db
   #   User.where(promocode: :nil).each do |user|
   #     self.promocode = loop do
@@ -110,6 +123,27 @@ class User < ApplicationRecord
   #       user2.save
   #       raise
   #     end
+  #   end
+  # end
+
+  # def save_and_make_payment(plan, card_token)
+  #   self.plan = plan
+  #   if valid?
+  #     begin
+  #       customer = Stripe::Customer.create(
+  #         source: card_token,
+  #         plan: plan.stripe_id,
+  #         email: email,
+  #       )
+  #       self.customer_id = customer.id
+  #       self.plan_id = plan.id
+  #       save(validate: false)
+  #     rescue Stripe::CardError => e
+  #       errors.add :credit_card, e.message
+  #       false
+  #     end
+  #   else
+  #     false
   #   end
   # end
 

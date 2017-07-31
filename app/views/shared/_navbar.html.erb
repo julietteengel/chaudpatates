@@ -1,12 +1,12 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= link_to main_app.root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
   <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <a href="<%= root_path(anchor: 'contenu') %>" class="navbar-wagon-link anchor">Présentation</a>
+    <a href="<%= main_app.root_path(anchor: 'contenu') %>" class="navbar-wagon-link anchor">Présentation</a>
     <div class="navbar-wagon-item">
       <div class="dropdown">
         <a href="#" class="navbar-wagon-link dropdown-toggle" data-toggle="dropdown">Villes</a>
@@ -15,7 +15,7 @@
             <ul class="">
               <!--  <li><h4>Nord-Ouest</h4></li> -->
               <% City.all.each do |c| %>
-                <li><%= link_to c.name, city_path(c.name.downcase) %></li>
+                <li><%= link_to c.name, main_app.city_path(c.name.downcase) %></li>
               <% end %>
             </ul>
             <ul class="">
@@ -46,29 +46,25 @@
     <% if user_signed_in? %>
     <!-- Different navigation if login or not -->
       <% if current_user.is_coach %>
-        <%= link_to trainings_path, class: "navbar-wagon-link" do %>
+        <%= link_to main_app.trainings_path, class: "navbar-wagon-link" do %>
           <i class="fa fa-calendar" aria-hidden="true"></i> Gérer ma ville
         <% end %>
       <% else %>
         <div class="navbar-wagon-item">
+<!--         if current_user has a subscription -->
+        <% if current_user.subscribed? %>
+          <%= link_to "Mon abonnement", koudoku.owner_subscriptions_path(current_user), class: "navbar-wagon-link" %>
+        <% else %>
           <h5>Séances <span class="circle"><%= current_user.tickets_nb %></span></h5>
+        <% end %>
         </div>
 
         <div class="navbar-wagon-item">
-          <%= form_tag orders_path do %>
-            <%= hidden_field_tag 'tickets_package_id', @tickets_package.id %>
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-image="http://res.cloudinary.com/ind-pendant/image/upload/v1477414806/logo_jieaz6.jpg"
-              data-locale="auto"
-              data-email="<%= current_user.email %>"
-              data-label="Acheter des séances"
-              data-name="<%= @tickets_package.tickets_nb %> tickets Chaud Patate"
-              data-description="Pour <%= @tickets_package.tickets_nb %> entraînements avec la team !"
-              data-amount="<%= @tickets_package.price_cents %>"
-              data-currency="<%= @tickets_package.price.currency %>">
-            </script>
+        <% unless current_user.subscribed? %>
+          <%= link_to main_app.orders_path, class: "navbar-wagon-link" do %>
+            Acheter des séances
           <% end %>
+        <% end %>
         </div>
       <% end %>
 
@@ -76,7 +72,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_user.photo %>
-            <%= cl_image_tag current_user.photo.path, height: 80, width: 80, crop: :fill, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= cl_image_tag main_app.current_user.photo.path, height: 80, width: 80, crop: :fill, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% elsif  current_user.linkedin_picture_url %>
             <%= cl_image_tag current_user.linkedin_picture_url, height: 80, width: 80, crop: :fill, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
@@ -84,18 +80,18 @@
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to user_path(current_user) do %>
+              <%= link_to main_app.user_path(current_user) do %>
               <i class="fa fa-user" aria-hidden="true"></i> Mon profil
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
+              <%= link_to main_app.destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Se déconnecter") %>
               <% end %>
             </li>
             <li>
               <% unless current_user.is_coach %>
-                <%= link_to bookings_path do %>
+                <%= link_to main_app.bookings_path do %>
                   <i class="fa fa-calendar" aria-hidden="true"></i> Mes entraînements à venir
                 <% end %>
               <% end %>
@@ -107,7 +103,7 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Se connecter"), main_app.new_user_session_path, class: "navbar-wagon-link" %>
 
     <% end %>
 

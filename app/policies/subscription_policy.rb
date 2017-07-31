@@ -1,12 +1,16 @@
-class OrderPolicy < ApplicationPolicy
+class SubscriptionPolicy < ApplicationPolicy
 
   def index?
     true
   end
 
-	def create?
+  def new?
+    true
+  end
+
+  def create?
     @record.user == user
-	end
+  end
 
   class Scope < Scope
     def resolve

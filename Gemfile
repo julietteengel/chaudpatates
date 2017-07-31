@@ -28,6 +28,8 @@ gem 'rack-canonical-host'
 gem 'rails_12factor'
 gem 'has_secure_token'
 gem "postmark-rails"
+gem 'koudoku', :git => 'git://github.com/julietteengel/koudoku'
+gem 'stripe_event'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

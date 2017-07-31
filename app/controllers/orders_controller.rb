@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
 	before_action :set_ticket, only: [ :create ]
+  skip_after_action :verify_policy_scoped, :only => :index
+
+  def index
+  end
 
 	def create
 		create_order
