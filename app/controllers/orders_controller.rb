@@ -43,7 +43,6 @@ class OrdersController < ApplicationController
 	    email:  params[:stripeEmail]
 	  )
 	  current_user.customer_id = @customer.id
-    current_user.suscribed = true
 	end
 
 	def charge_customer

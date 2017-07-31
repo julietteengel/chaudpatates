@@ -24,9 +24,7 @@ class BookingsController < ApplicationController
         format.js
         end
     else
-        # If current_user has a plan
-        @subscription = Subscription.find_by_user_id(@booking.user.id)
-        if @subscription.present?
+       if current_user.subscribed? # If current_user has a plan
           @booking.notify_customer if @booking.save
            current_user.save
            respond_to do |format|
@@ -35,9 +33,8 @@ class BookingsController < ApplicationController
               redirect_to city_path(params[:city])
               }
               format.js
-            end
-          else
-		        if current_user.tickets_nb > 0
+          end
+        elsif current_user.tickets_nb > 0 # If current_user has tickets
               @booking.notify_customer if @booking.save
               @tickets_before_booking = current_user.tickets_nb
               current_user.tickets_nb -= 1
@@ -49,24 +46,17 @@ class BookingsController < ApplicationController
                 }
                 format.js
               end
-            else
-              @tickets_before_booking = 0
-              respond_to do |format|
-                format.html {
-				        flash[:alert] = "Vous n'avez plus assez de tickets, merci d'en racheter !!"
-				        redirect_to city_path(params[:city])
-                }
-				        format.js
-			       end
-		        end
-          end
-    end
+        else # user has to buy tickets or subscribed
+          @tickets_before_booking = 0
+                flash[:notice] = "Pour booker, achetez des tickets ou un abonnement"
+                render js: "window.location.href = '#{orders_path}'"
+		    end
+      end
 	end
 
 	def destroy
-		if (Time.current < @booking.training.date - 1.day) && @booking.destroy
-			current_user.tickets_nb += 1
-			current_user.save
+    # If current_user has a plan
+    if current_user.subscribed? && @booking.destroy
       respond_to do |format|
         format.html {
           flash[:notice] = "Votre inscription a bien été annulée"
@@ -74,6 +64,16 @@ class BookingsController < ApplicationController
         }
         format.js
       end
+   #  elsif (Time.current < @booking.training.date - 1.day) && @booking.destroy
+			# current_user.tickets_nb += 1
+			# current_user.save
+   #    respond_to do |format|
+   #      format.html {
+   #        flash[:notice] = "Votre inscription a bien été annulée"
+   #        redirect_to(bookings_path)
+   #      }
+   #      format.js
+   #    end
     else
       respond_to do |format|
         format.html {

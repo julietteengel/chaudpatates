@@ -88,6 +88,15 @@ class User < ApplicationRecord
     end
   end
 
+  def subscribed?
+    @subscription = Subscription.find_by_user_id(self.id)
+    if @subscription.present? && @subscription.plan_id.present?
+      true
+    else
+      false
+    end
+  end
+
   # def add_promocode_to_users_in_db
   #   User.where(promocode: :nil).each do |user|
   #     self.promocode = loop do

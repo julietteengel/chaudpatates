@@ -15,10 +15,10 @@ ActiveAdmin.register Training do
       Training.includes(:location)  # specify grandchild model with hash!
     end
     def destroy
-      Training.find(params[:id]).members.each do |member|
-      member.tickets_nb += 1
-      member.save
-      end
+      # Training.find(params[:id]).members.each do |member|
+      # member.tickets_nb += 1
+      # member.save
+      # end
       Training.destroy(params[:id])
     end
   end
