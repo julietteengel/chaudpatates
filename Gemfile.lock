@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: git://github.com/julietteengel/koudoku
-  revision: 09b898a77a4ae321643ca69498902c4907c5c750
+  revision: a3b48693356a4a42f401490f743efbe73ac7852a
   specs:
     koudoku (1.3.0)
       bluecloth

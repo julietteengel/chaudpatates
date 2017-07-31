@@ -1,25 +1,25 @@
 <div class="navbar-wagon-item hidden-md hidden-lg">
   <% if user_signed_in? %>
   <div class="navbar-wagon-item">
-    <h5>Séances <span class="circle"><%= current_user.tickets_nb %></span></h5>
+    <% if current_user.subscribed? %>
+          <h5> Séances illimitées </h5>
+
+        <% else %>
+          <h5>Séances <span class="circle"><%= current_user.tickets_nb %></span></h5>
+    <% end %>
   </div>
 
-  <div class="navbar-wagon-item">
-    <%= form_tag main_app.orders_path do %>
-    <%= hidden_field_tag 'tickets_package_id', @tickets_package.id %>
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-image="http://res.cloudinary.com/ind-pendant/image/upload/v1477414806/logo_jieaz6.jpg"
-    data-locale="auto"
-    data-email="<%= current_user.email %>"
-    data-label="Acheter des séances"
-    data-name="<%= @tickets_package.tickets_nb %> tickets Chaud Patate"
-    data-description="Pour <%= @tickets_package.tickets_nb %> entraînements avec la team !"
-    data-amount="<%= @tickets_package.price_cents %>"
-    data-currency="<%= @tickets_package.price.currency %>">
-  </script>
-  <% end %>
-</div>
+
+<div class="navbar-wagon-item">
+        <% unless current_user.subscribed? %>
+          <%= link_to main_app.orders_path do %>
+            Acheter des séances
+          <% end %>
+        <% end %>
+        </div>
+
+
+
 <% end %>
 
 <div class="dropdown">

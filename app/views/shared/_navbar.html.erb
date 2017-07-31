@@ -51,13 +51,20 @@
         <% end %>
       <% else %>
         <div class="navbar-wagon-item">
+<!--         if current_user has a subscription -->
+        <% if current_user.subscribed? %>
+          <%= link_to "Mon abonnement", koudoku.owner_subscriptions_path(current_user), class: "navbar-wagon-link" %>
+        <% else %>
           <h5>Séances <span class="circle"><%= current_user.tickets_nb %></span></h5>
+        <% end %>
         </div>
 
         <div class="navbar-wagon-item">
-          <%= link_to main_app.orders_path do %>
+        <% unless current_user.subscribed? %>
+          <%= link_to main_app.orders_path, class: "navbar-wagon-link" do %>
             Acheter des séances
           <% end %>
+        <% end %>
         </div>
       <% end %>
 
