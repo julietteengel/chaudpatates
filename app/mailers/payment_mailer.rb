@@ -15,5 +15,9 @@ class PaymentMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Payment failed')
   end
 
+  def subscription_cancelled(subscription)
+    @plan = subscription.plan
+    mail(:to => subscription.user.email, :subject => "Votre abonnement de trois mois a pris fin!")
+  end
 
 end
