@@ -17,6 +17,7 @@ class PaymentMailer < ApplicationMailer
 
   def subscription_cancelled(subscription)
     @plan = subscription.plan
+    @date = Time.current + 1.month
     mail(:to => subscription.user.email, :subject => "Votre abonnement de trois mois a pris fin!")
   end
 
