@@ -60,6 +60,11 @@
   <br>
   <br>
   <% end %>
+  <% if @user.subscribed? %>
+  Abonné(e)
+  <br>
+  <br>
+  <% end %>
   Vous avez parraîné <%= t('.count_parrainages', count: @count_parrainages) %>!
 </div>
 

@@ -8,8 +8,8 @@ fr:
     confirmations:
       feature_depends_on_devise: "Cette feature dépend de Devise pour l'authentification."
       subscription_cancelled: "Votre souscription a été annulée."
-      subscription_updated: "Votre abonnement a été mis à jour."
-      subscription_upgraded: "Votre abonnement a été mis à jour."
+      subscription_updated: "Mise à jour effectuée."
+      subscription_upgraded: "Mise à jour effectuée."
     failure:
       problem_processing_transaction: "Nous avons rencontré un problème lors de la transaction."
       unauthorized: "Non autorisé."
