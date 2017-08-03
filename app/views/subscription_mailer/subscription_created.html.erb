@@ -134,13 +134,29 @@
 
                                                         <h2>Bonjour <%= @user.first_name %>,</h2>
 
-                                                        <p>Votre paiement pour l'abonnement: <%= @plan.name %> a bien été reçu.
-
-
+                                                        <p>Vous êtes désormais abonné à:  <%= @plan.name %>.
                                                           <br>
-                                                          Merci de votre confiance!
+                                                          <br />
+
+
+                                                        <% if @plan.name == "Abonnement mensuel" %>
+                                                        Vous avez accès à un mois de séances Chaudpatate de manière illimitée!
+                                                        <br />
+                                                        Cet abonnement a une durée d'engagement de 3 mois.
+                                                        Votre carte bancaire sera débitée le <%= @date.strftime("%d/%m/%Y") %> d'un montant de <%= (@plan.price) %>€.
+                                                        <br />
+                                                        Votre abonnement prendra fin le <%= (@date+ 2.month).strftime("%d/%m/%Y") %>.
+
+                                                        <br />
+
+                                                        <% elsif @plan.name == "Abonnement annuel" %>Vous avez accès à un an de séances Chaudpatate de manière illimitée!
+                                                        <br />
+                                                        Votre abonnement prendra fin le <%= (@date + 12.month).strftime("%d/%m/%Y") %>.
+                                                        <% end %>
 
                                                           </p>
+                                                          <br />
+                                                          <p>Inscrivez-vous dès maintenant à un entraînement dans votre ville!</p>
 
                                                           <table>
                                                             <tr>

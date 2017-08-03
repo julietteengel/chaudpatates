@@ -5,14 +5,11 @@ class PaymentMailer < ApplicationMailer
   #
   #   en.user_mailer.welcome.subject
   #
-  def subscription_deleted(user)
-    mail(:to => subscription.user.email, subject: 'Subscription Deleted')
-  end
-
   def payment_succeeded(subscription)
-    # @subscription = subscription
-    # mail(to: @user.email, subject: 'Payment succeeded')
-    mail(:to => subscription.user.email, :subject => "My Subscription Invoice")
+    @plan = subscription.plan
+    @user = subscription.user
+    @date = Time.current + 1.month
+    mail(:to => subscription.user.email, :subject => "Paiment reçu pour votre abonnement Chaudpatate")
   end
 
   def payment_failed(user)
@@ -20,5 +17,11 @@ class PaymentMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Payment failed')
   end
 
+  def subscription_cancelled(subscription)
+    @plan = subscription.plan
+    @user = subscription.user
+    @date = Time.current + 1.month
+    mail(:to => subscription.user.email, :subject => "Votre abonnement mensuel prend fin dans un mois")
+  end
 
 end

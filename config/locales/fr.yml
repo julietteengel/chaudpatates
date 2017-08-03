@@ -8,8 +8,8 @@ fr:
     confirmations:
       feature_depends_on_devise: "Cette feature dépend de Devise pour l'authentification."
       subscription_cancelled: "Votre souscription a été annulée."
-      subscription_updated: "Votre abonnement a été mis à jour."
-      subscription_upgraded: "Votre abonnement a été mis à jour."
+      subscription_updated: "Mise à jour effectuée."
+      subscription_upgraded: "Mise à jour effectuée."
     failure:
       problem_processing_transaction: "Nous avons rencontré un problème lors de la transaction."
       unauthorized: "Non autorisé."
@@ -27,7 +27,7 @@ fr:
       expiration: "Expire le (MM/YYYY)"
       payment_information: "Information de paiement"
       save_billing_info: "Sauver les informations bancaires"
-      upgrade_account: "Changer d'abonnement"
+      upgrade_account: "Mettre à jour"
       update_payment_information: "Mettre à jour les informations bancaires"
     social_proof:
       testimonial1:
@@ -52,7 +52,7 @@ fr:
       subscribed: "Vous êtes inscrit!"
       subscribed_to_plan: "Vous êtes abonné à: %{plan}."
       upgrade_your_account: "Mettre à jour votre compte"
-      which_plan_is_best: "What Plan Is Best For You?"
+      which_plan_is_best: "Abonnements disponibles:"
 
 
 

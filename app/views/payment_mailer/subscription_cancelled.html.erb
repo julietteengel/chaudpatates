@@ -135,6 +135,13 @@
                                                         <h2>Bonjour <%= @user.first_name %>,</h2>
 
                                                         <p>Votre paiement pour l'abonnement: <%= @plan.name %> a bien été reçu.
+                                                        <br />
+
+
+                                                      Nous vous informons que votre abonnement prendra fin le le <%= @date.strftime("%d/%m/%Y") %>.
+                                                      <br />
+
+
 
 
                                                           <br>

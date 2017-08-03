@@ -18,77 +18,62 @@ Stripe.api_key = Rails.configuration.stripe[:secret_key]
 end
 
 StripeEvent.configure do |events|
-
-  # events.subscribe "invoice.payment_failed" do |event|
-  #   stripe_customer_id = user.event.data.object.customer
-  #   user = User.find_by(stripe_id: stripe_customer_id)
-  #   PaymentMailer.payment_failed(user).deliver_now if user
-  # end
-
-
-# pas testé
-  events.subscribe 'charge.failed' do |event|
-    stripe_id = event.data.object['customer']
-
-    subscription = ::Subscription.find_by_stripe_id(stripe_id)
-    subscription.charge_failed
-    customer = Stripe::Customer.retrieve(stripe_id)
-    PaymentMailer.payment_failed(customer).deliver_now if customer
-  end
-
-
-
-
-# Fonctionne quand appelé en console mais n'a pas l'air de fonctionner en dev vu les logs ?
-  events.subscribe 'invoice.payment_succeeded' do |event|
-    stripe_id = event.data.object['customer']
-    subscription = ::Subscription.find_by_stripe_id(stripe_id)
-    PaymentMailer.payment_succeeded(subscription).deliver
-  end
-
-
-# Fonctionne quand appelé en console mais n'a pas l'air de fonctionner en dev vu les logs ?
-  events.subscribe 'invoice.payment_failed' do |event|
-    stripe_id = event.data.object['customer']
-    subscription = ::Subscription.find_by_stripe_id(stripe_id)
-    PaymentMailer.payment_failed(subscription).deliver
-  end
-
-
-# pas testé
-  events.subscribe 'customer.subscription.deleted' do |event|
-    stripe_id = event.data.object['customer']
-    subscription = ::Subscription.find_by_stripe_id(stripe_id)
-    customer = Stripe::Customer.retrieve(stripe_id)
-    customer.subscription.deleted
-    PaymentMailer.subscription_deleted(customer).deliver_now if customer
-  end
-
-# pas testé
-  events.subscribe 'charge.dispute.created' do |event|
-    stripe_id = event.data.object['customer']
-    subscription = ::Subscription.find_by_stripe_id(stripe_id)
-    subscription.charge_disputed
-  end
-
-# pas testé
-  events.subscribe 'customer.subscription.updated' do |event|
-    stripe_id = event.data.object['customer']
-
-    subscription = ::Subscription.find_by_stripe_id(stripe_id)
-    subscription.charge_failed
-    customer = Stripe::Customer.retrieve(stripe_id)
-    PaymentMailer.payment_failed(customer).deliver_now if customer
-  end
-
-  events.subscribe 'customer.subscription.deleted' do |event|
-    stripe_id = event.data.object['customer']
-    subscription = ::Subscription.find_by_stripe_id(stripe_id)
-    subscription.subscription_owner.try(:cancel)
-  end
-
-  events.all do |event|
-    # Handle all event types - logging, etc.
-  end
-
+  events.subscribe 'invoice.payment_succeeded', InvoicePaymentsucceeded.new
+  events.subscribe "invoice.payment_failed", InvoicePaymentsfailed.new
+  # events.subscribe "customer.subscription_created", CustomerSubscriptioncreated.new
+  events.subscribe "customer.subscription.deleted", CustomerSubscriptiondeleted.new
+  events.subscribe "customer.subscription.created", CustomerSubscriptioncreated.new
+  events.subscribe "customer.source.created", CustomerSourcecreated.new
 end
+
+
+# # pas testé
+#   events.subscribe 'charge.failed' do |event|
+#     stripe_id = event.data.object['customer']
+
+#     subscription = ::Subscription.find_by_stripe_id(stripe_id)
+#     subscription.charge_failed
+#     customer = Stripe::Customer.retrieve(stripe_id)
+#     PaymentMailer.payment_failed(customer).deliver_now if customer
+#   end
+
+
+
+
+# # pas testé
+#   events.subscribe 'customer.subscription.deleted' do |event|
+#     stripe_id = event.data.object['customer']
+#     subscription = ::Subscription.find_by_stripe_id(stripe_id)
+#     customer = Stripe::Customer.retrieve(stripe_id)
+#     customer.subscription.deleted
+#     PaymentMailer.subscription_deleted(customer).deliver_now if customer
+#   end
+
+# # pas testé
+#   events.subscribe 'charge.dispute.created' do |event|
+#     stripe_id = event.data.object['customer']
+#     subscription = ::Subscription.find_by_stripe_id(stripe_id)
+#     subscription.charge_disputed
+#   end
+
+# # pas testé
+#   events.subscribe 'customer.subscription.updated' do |event|
+#     stripe_id = event.data.object['customer']
+
+#     subscription = ::Subscription.find_by_stripe_id(stripe_id)
+#     subscription.charge_failed
+#     customer = Stripe::Customer.retrieve(stripe_id)
+#     PaymentMailer.payment_failed(customer).deliver_now if customer
+#   end
+
+#   events.subscribe 'customer.subscription.deleted' do |event|
+#     stripe_id = event.data.object['customer']
+#     subscription = ::Subscription.find_by_stripe_id(stripe_id)
+#     subscription.subscription_owner.try(:cancel)
+#   end
+
+#   events.all do |event|
+#     # Handle all event types - logging, etc.
+#   end
+
+# end
