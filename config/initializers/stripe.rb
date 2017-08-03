@@ -4,6 +4,7 @@ Rails.configuration.stripe = {
 }
 
 Stripe.api_key = Rails.configuration.stripe[:secret_key]
+StripeEvent.authentication_secret = ENV['STRIPE_WEBHOOK_SECRET']
 
 # To test Stripe events:
  StripeEvent.event_retriever = lambda do |params|
