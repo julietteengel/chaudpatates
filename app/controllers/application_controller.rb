@@ -16,6 +16,14 @@ def set_current_user
   Booking.current_user = current_user
 end
 
+def after_sign_in_path_for(resource)
+    if resource.admin == true
+      admin_root_path
+    else
+      user_path(resource)
+    end
+end
+
   private
 
   def set_tickets_package_for_order
