@@ -7,16 +7,16 @@ Stripe.api_key = Rails.configuration.stripe[:secret_key]
 # StripeEvent.authentication_secret = ENV['STRIPE_WEBHOOK_SECRET']
 
 # To test Stripe events:
- StripeEvent.event_retriever = lambda do |params|
-    if params[:livemode]
-        ::Stripe::Event.retrieve(params[:id])
-    elsif Rails.env.development?
-        # This will return an event as is from the request (security concern in production)
-    ::Stripe::Event.construct_from(params.deep_symbolize_keys)
-    else
-        nil
-    end
-end
+#  StripeEvent.event_retriever = lambda do |params|
+#     if params[:livemode]
+#         ::Stripe::Event.retrieve(params[:id])
+#     elsif Rails.env.development?
+#         # This will return an event as is from the request (security concern in production)
+#     ::Stripe::Event.construct_from(params.deep_symbolize_keys)
+#     else
+#         nil
+#     end
+# end
 
 StripeEvent.configure do |events|
   events.subscribe 'invoice.payment_succeeded', InvoicePaymentsucceeded.new
