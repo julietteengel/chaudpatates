@@ -20,11 +20,16 @@ end
 
 StripeEvent.configure do |events|
   events.subscribe 'invoice.payment_succeeded', InvoicePaymentsucceeded.new
+  puts "invoice succeded"
   events.subscribe "invoice.payment_failed", InvoicePaymentsfailed.new
+  puts "ivoice failed"
   # events.subscribe "customer.subscription_created", CustomerSubscriptioncreated.new
   events.subscribe "customer.subscription.deleted", CustomerSubscriptiondeleted.new
+  puts "sub deleted"
   events.subscribe "customer.subscription.created", CustomerSubscriptioncreated.new
+  puts "created"
   events.subscribe "customer.source.created", CustomerSourcecreated.new
+  puts "created"
 end
 
 
