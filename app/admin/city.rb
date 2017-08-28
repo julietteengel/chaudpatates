@@ -19,6 +19,7 @@ ActiveAdmin.register City do
       input :name
       input :user, label: 'Coach', collection: User.is_coach.not_linked_to_city
       input :photo, :as => :file
+      input :public, as: :boolean
     end
     actions
   end
@@ -28,6 +29,7 @@ ActiveAdmin.register City do
     column :id
     column :name
     column :coach
+    column :public, as: :boolean
     column :photo do |event|
       link_to(cl_image_tag event.photo.path, height: 50)
     end
