@@ -3,6 +3,7 @@ class City < ApplicationRecord
   belongs_to :user
   has_many :sessions, dependent: :destroy
   has_many :trainings, dependent: :destroy
+  has_many :members, dependent: :destroy
 
   alias_attribute :coach, :user
   alias_attribute :coach=, :user=

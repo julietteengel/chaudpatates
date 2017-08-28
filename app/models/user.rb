@@ -27,6 +27,7 @@ class User < ApplicationRecord
   # validates_uniqueness_of :promocode
 
   scope :is_coach, -> { where(is_coach: true) }
+  scope :is_admin, -> { where(groupe_admin: true) }
   scope :not_linked_to_city, -> { joins("LEFT OUTER JOIN cities ON cities.user_id = users.id").where("cities IS null") }
 
   after_create :send_welcome_email

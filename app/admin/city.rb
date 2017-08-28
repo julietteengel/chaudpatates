@@ -1,6 +1,6 @@
 ActiveAdmin.register City do
 	menu priority: 2
-	permit_params :name, :user_id, :photo, :public, :admin
+	permit_params :name, :user_id, :photo, :public, :admin, :slug
 
   filter :name
 	filter :user, label: 'COACH', collection: proc { User.is_coach }
@@ -22,7 +22,8 @@ ActiveAdmin.register City do
       input :user, :label => 'Coach', :as => :select, :collection => User.all.map{|u| ["#{u.first_name} #{u.last_name}", u.id]}
       input :photo, :as => :file
       input :public, as: :boolean
-      input :admin, :label => 'Admin', :as => :select, :collection => User.all.map{|u| ["#{u.first_name} #{u.last_name}", u.id]}
+      input :admin, :label => 'Admin', :as => :select, :collection => User.is_admin.map{|u| ["#{u.first_name} #{u.last_name}", u.id]}
+      input :slug
     end
     actions
   end
