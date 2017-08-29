@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   menu priority: 1
-  permit_params :email, :password, :password_confirmation, :first_name, :last_name, :tickets_nb, :is_coach, :promocode
+  permit_params :email, :password, :password_confirmation, :first_name, :last_name, :tickets_nb, :is_coach, :promocode, :groupe_admin
 
   filter :city
   filter :email
@@ -9,6 +9,8 @@ ActiveAdmin.register User do
   filter :tickets_nb
   filter :created_at
   filter :promocode
+  filter :admin, as: :boolean
+  filter :groupe_admin, as: :check_boxes
   filter :is_coach, as: :check_boxes
   filter :admin, as: :check_boxes
 
@@ -20,6 +22,8 @@ ActiveAdmin.register User do
       input :last_name
       input :tickets_nb
       input :is_coach
+      input :groupe_admin
+      input :admin, as: :boolean
       input :promocode
     end
     actions
@@ -33,8 +37,14 @@ ActiveAdmin.register User do
     column :last_name
     column :tickets_nb
     column :is_coach
+    column :groupe_admin
     column :promocode
     column :admin
+    # column :city do |user|
+    #   unless user.city.nil?
+    #   link_to "#{user.city.name}", admin_city_path(user.city)
+    #   end
+    # end
     actions
   end
 
