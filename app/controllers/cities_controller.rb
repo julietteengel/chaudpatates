@@ -37,7 +37,7 @@ class CitiesController < ApplicationController
 
 	def set_city_members
 		@city_members = @city.find_city_members
-    @groupe_members = @city.members
+    @groupe_members = Member.where(city_id: @city.id)
 	end
 
 	def create_hash_location

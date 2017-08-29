@@ -20,7 +20,6 @@ ActiveAdmin.register User do
       input :email
       input :first_name
       input :last_name
-      input :city, :label => 'City', :as => :select, :collection => City.all
       input :tickets_nb
       input :is_coach
       input :groupe_admin
@@ -36,12 +35,16 @@ ActiveAdmin.register User do
     column :email
     column :first_name
     column :last_name
-    column :city
     column :tickets_nb
     column :is_coach
     column :groupe_admin
     column :promocode
     column :admin
+    # column :city do |user|
+    #   unless user.city.nil?
+    #   link_to "#{user.city.name}", admin_city_path(user.city)
+    #   end
+    # end
     actions
   end
 

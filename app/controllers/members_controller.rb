@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  skip_after_action :verify_authorized, only: [:show]
+  skip_after_action :verify_authorized, only: [:show, :create]
   # before_action :set_user, only: [:update]
 
   def new
@@ -9,17 +9,23 @@ class MembersController < ApplicationController
   end
 
   def create
-    @member = Member.new(member_params)
-    @member.city = current_user.city
-    @member.user = current_user
-    authorize @training
-    if @training.save
-      flash[:notice] = "Ce nouvel entrainement a bien été créé"
-      redirect_to(trainings_path)
-    else
-      flash[:alert] = "L'entraînement n'a pas pu être rajouté, merci de vérifier les erreurs ci-dessous"
-      render :new
-    end
+    city = City.find_by_admin(current_user.id)
+    params[:participants_addresses] = params[:participants_addresses].split(/\s|,/) if params[:participants_addresses].present?
+    params[:participants_addresses].each do |email|
+        @member = Member.new
+        @member.email = email
+        @member.user = current_user
+        @member.city = city
+        @member.save
+        flash[:notice] = "Les membres ont bien été enregistrés"
+        if User.find_by_email(email).nil? == false # déjà user
+          @member.is_a_user = true
+          @member.save
+       else # user n'existe pas - envoyer mail à member et lui proposer de s'inscrire
+          # envoyer un autre mail
+        end
+      end
+    redirect_to(root_path)
   end
 
 
@@ -49,6 +55,7 @@ private
   def member_params
     params.require(:member).permit(:email)
   end
+
 
   # def set_user
   #   @user = User.find(params[:id])

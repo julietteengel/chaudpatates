@@ -29,7 +29,9 @@ Rails.application.routes.draw do
   resources :trainings, only: [:index, :new, :create, :update, :destroy]
   resources :bookings, only: [:index, :create, :destroy]
   resources :orders, only: [:index]
-  resources :orders, only: [:create] do
+  resources :members, only: [:create]
+  resources :orders, only: [:create, :new] do
+
     resources :payments, only: [:create]
   end
 
