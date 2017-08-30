@@ -93,11 +93,12 @@
                   <% end %>
                   <% end %>
                 <% end %>
-              <% else %>
+              <% unless @city.public == false %>
               <% unless @city_members.empty? %>
                 <% @city_members.each do |city_member| %>
                   <%= render "/users/user_card", city_member: city_member%>
                 <% end %>
+              <% end %>
               <% end %>
 
               </div>
