@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
 def set_current_user
   Booking.current_user = current_user
@@ -41,6 +42,11 @@ end
 
   def store_current_location
     store_location_for(:user, request.url)
+  end
+
+  def user_not_authorized
+    flash[:alert] = "Vous n'êtes pas autorisé à effectuer cette action."
+    redirect_to(request.referrer || root_path)
   end
 
 

@@ -10,6 +10,12 @@ before_filter :configure_permitted_parameters, :only => [:create]
     # add custom create logic here
     resource.save
     build_resource(registration_params)
+    # Check if the new user is already a member
+    member = Member.find_by_email(resource.email)
+    if member.present?
+      member.is_a_user = true
+      member.save
+    end
     unless resource.invite_promocode.blank?
       if User.find_by_promocode(resource.invite_promocode).present?
         user2 = User.find_by_promocode(resource.invite_promocode)
