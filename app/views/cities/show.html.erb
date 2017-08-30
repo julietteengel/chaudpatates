@@ -26,7 +26,8 @@
             </h4>
           <% end %>
         </div>
-        <div class="banner-cta">
+        <div class="banner-cta link_user_profile">
+        <%= link_to user_path(@city.coach) do %>
           <div class="btn-coach">
             <div>
               <% if @city.coach.photo %>
@@ -34,6 +35,7 @@
               <% end %>
               <strong><%= @city.coach.full_name %></strong>
             </div>
+          <% end %>
           </div>
           <% if @city.coach != current_user %>
             <a class="btn-cta" data-toggle="modal" data-target="#IndexTrainings">S’inscrire à une session</a>
@@ -100,6 +102,7 @@
 
               </div>
             </div>
+
 
           </div>
         <% if @next_location %>
