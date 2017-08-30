@@ -78,7 +78,7 @@
           </div>
         <% end %>
           <div class="row">
-          <% if @city.admin == current_user.id %>
+
             <div class="col-xs-12 section-members <%= 'inactive' if (@city_members.empty? && @groupe_members.empty?) %>">
               <h3 class="text-center section-title">Membres de Chaud Patate à  <%= @city.name %></h3>
               <div class="members-listing">
@@ -100,7 +100,7 @@
 
               </div>
             </div>
-            <% end %>
+
           </div>
         <% if @next_location %>
           <div id="map"></div>
@@ -108,6 +108,7 @@
         <div class="row" style="
     text-align: center;">
           <div class="col-xs-12 section-add-members" >
+          <% if current_user.present? %>
             <% if @city.admin == current_user.id %>
             <h3 class="text-center">Vous êtes admin de <%= @city.name %>.</h3>
             <br>
@@ -122,13 +123,14 @@
             </div>
             <div class="col-xs-12">
             <%= button_tag(type: "submit", class: "btn btn-default") do %>
-    Ajouter <i class="icon-repeat"></i>
-<% end %>
+              Ajouter <i class="icon-repeat"></i>
+            <% end %>
             </div>
             </div>
             <% end %>
 
             <% end %>
+          <% end %>
 
 
           </div>
