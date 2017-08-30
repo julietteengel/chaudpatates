@@ -112,7 +112,7 @@
     text-align: center;">
           <div class="col-xs-12 section-add-members" >
           <% if current_user.present? %>
-            <% if @city.admin == current_user.id %>
+            <% if @city.admin == current_user.id || current_user.admin? %>
             <h3 class="text-center">Vous êtes admin de <%= @city.name %>.</h3>
             <br>
             <p>Ajoutez des membres en rentrant ci-dessous les adresses emails et en marquant un espace entre chaque email.</p>

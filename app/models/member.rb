@@ -1,6 +1,6 @@
 class Member < ApplicationRecord
 
-  belongs_to :city, dependent: :destroy
+  belongs_to :city
   belongs_to :user
 
   validates :user_id, presence: true

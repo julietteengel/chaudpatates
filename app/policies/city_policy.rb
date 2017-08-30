@@ -11,6 +11,8 @@ class CityPolicy < ApplicationPolicy
         true
       elsif user.id == record.admin
         true
+      elsif user.admin?
+        true
       else
         false
       end
