@@ -19,8 +19,11 @@ class MembersController < ApplicationController
         @member.save
         flash[:notice] = "Les membres ont bien été enregistrés"
         if User.find_by_email(email).nil? == false # déjà user
+          @user = User.find_by_email(email)
+          @user.is_a_member = true
           @member.is_a_user = true
           @member.save
+          @user.save
        else # user n'existe pas - envoyer mail à member et lui proposer de s'inscrire
           # envoyer un autre mail
         end

@@ -1,6 +1,6 @@
 ActiveAdmin.register TicketsPackage do
 	menu priority: 7
-	permit_params :user_id, :training_id
+	permit_params :user_id, :training_id,  :sku, :price, :tickets_nb
   actions :index, :show, :edit, :update
 
   config.filters = false

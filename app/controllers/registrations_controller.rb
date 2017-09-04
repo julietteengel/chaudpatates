@@ -15,6 +15,10 @@ before_filter :configure_permitted_parameters, :only => [:create]
     if member.present?
       member.is_a_user = true
       member.save
+      resource.is_a_member = true
+      current_user.is_a_member = true
+      current_user.save
+      resource.update(users_params)
     end
     unless resource.invite_promocode.blank?
       if User.find_by_promocode(resource.invite_promocode).present?
@@ -48,11 +52,11 @@ before_filter :configure_permitted_parameters, :only => [:create]
   end
 
   def users_params
-    params.require(:user).permit(:photo, :email, :phone, :company, :role, :bio)
+    params.require(:user).permit(:photo, :email, :phone, :company, :role, :bio, :is_a_member)
   end
 
   def registration_params
-    params.require(:user).permit(:first_name, :last_name, :invite_promocode, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :invite_promocode, :email, :password, :is_a_member)
   end
 
 end

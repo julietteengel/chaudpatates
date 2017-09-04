@@ -24,6 +24,10 @@ class BookingsController < ApplicationController
         format.js
         end
     else
+      # si user est membre de cette ville, pas besoin de payer TODO
+      # if current_user.is_a_member && current_user.city
+
+      # if current_user
        if current_user.subscribed? # If current_user has a plan
           @booking.notify_customer if @booking.save
            current_user.save
