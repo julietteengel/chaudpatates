@@ -25,10 +25,21 @@ class BookingsController < ApplicationController
         end
     else
       # si user est membre de cette ville, pas besoin de payer TODO
-      # if current_user.is_a_member && current_user.city
-
-      # if current_user
-       if current_user.subscribed? # If current_user has a plan
+      if current_user.is_a_member
+        member = Member.find_by_email(current_user.email)
+        if member.city = @training.city
+          @booking.notify_customer if @booking.save
+           current_user.save
+           respond_to do |format|
+            format.html {
+              flash[:notice] = "Votre réservation a bien été prise en compte !!"
+              redirect_to city_path(params[:city])
+              }
+              format.js
+          end
+        end
+       elsif current_user.subscribed?
+       # If current_user has a plan
           @booking.notify_customer if @booking.save
            current_user.save
            respond_to do |format|
