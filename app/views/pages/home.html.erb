@@ -9,27 +9,78 @@
 <div class="banner">
   <div class="banner-content">
     <h1>Chaudpatate</h1>
-    <h2>Le networking sportif</h2>
+    <h2>Un projet co-construit avec les startupers</h2>
   </div>
 </div>
-<div class="container">
-  <% unless user_signed_in? %>
-    <div class="row">
-      <div class="buttons">
-        <a href="#concept" id="concept-button" class="btn btn-gray">Découvrir notre concept</a>
-        <%= link_to "Devenir membre", new_user_session_path, class: "btn btn-green" %>
+
+<div class="container-fluid large-padded bg-grey" id="mot-du-coach">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3 col-sm-offset-2 text-center spaced-bottom">
+      <%= image_tag("paul-voillemin.jpg", size: "200x200", alt: "Edit Entry", class: "avatar-portrait") %>
+    </div>
+    <h2 class="col-xs-12 col-sm-5 text-left spaced-bottom">
+      Paul Voillemin<br /><small>Fondateur de Chaud Patate</small> <br>
+      <small>Coach sportif et préparateur physique dans le judo de haut niveau </small>
+    </h2>
+    <div class="col-xs-12 col-sm-5">
+      <p>“ Après avoir travaillé en solo depuis mon domicile pendant 3 ans, j’ai décidé de rejoindre en octobre 2015 un nouvel espace de travail, l’espace de coworking Co-Start, avec l’idée d’échanger et de partager mes compétences avec les résidents. Récemment ouvert à l’époque où je l’intégrais, ces derniers intéragissaient peu.
+      <br>
+<br>
+Au bout d’une semaine, j’ai proposé aux responsables de l’espace de faire des minis défis sportifs ludiques afin de briser la glace et de favoriser les échanges. Au début, cela se faisait de manière ponctuelle, puis comme tout le monde jouait le jeu et en redemandait encore, je les ai mis en place au quotidien. Pour les coworkers, il s’agissait d’un bon moyen pour sortir la tête de leur écran, communiquer et bouger. Lors de ces défis, tous les participants se présentaient ainsi que leur startup. Les nouveaux arrivants en profitaient pour faire plus vite connaissance avec le reste de la communauté.
+<br>
+<br>
+Pour l’espace de coworking, cela permettait de créer de la cohésion entre les résidents, tout les jours et en moins de 5 min. L’entraide et le partage étaient devenus naturels. En novembre 2015, ces minis défis sont devenus des séances d’une heure et depuis, l’histoire continue ! Chaud Patate s’est développé dans plusieurs villes en France.
+<br>
+<br>
+Aujourd’hui, Chaud Patate collabore avec l’ensemble de l’écosystème entrepreneurial de type CCI, BPI, CPME, incubateurs, espaces de coworking, grands groupes, salons professionnels,... afin de favoriser les échanges entre les différentes structures, leurs membres, leurs visiteurs, autour d’une séance de sport pas comme les autres...”
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" id="contenu">
+<h2 class="text-center">Le 1er réseau de Networking Sportif français
+ pour les entrepreneurs</h2>
+ <br>
+ <br>
+ <p>Chaud Patate Networking Sportif est l’icebreaker parfait, rapide et fun pour <b>développer votre réseau</b>. C’est un gain de temps alliant l’utile à l’agréable (rester en forme tout en faisant du business) mais aussi un bon moyen <b>d’évacuer votre stress et vos soucis du quotidien</b>.
+
+Ce service est destiné à tous les entrepreneurs, startupers, freelance et acteurs de l’écosystème entrepreneurial (au féminin comme au masculin, bien-sûr) qui veulent faire du sport pour le plaisir et non devenir des sportifs de haut niveau.
+<br>
+C’est pourquoi la méthode de <b>Chaud Patate Networking Sportif se veut ludique et accessible à tous !</b>
+</p>
+  <div class="row no-gutter">
+    <div class="col-xs-12 col-sm-6">
+      <div class="side-margin">
+        <p>Une séance type est un pur moment de plaisir, elle comprend :</p>
+        <ul>
+          <li><b>Echauffement</b></li>
+          <li><b>Pitch Elevator Sportif</b> (présentation rapide de votre activité professionnelle)</li>
+          <li><b>Approche ludique de renforcement musculaire et de cardio-training</b></li>
+          <li><b>Jeux divers</b> en binôme ou par équipe</li>
+          <li><b>Win to W.I.N</b> (exploration des besoins / problématiques de chacun), synonyme de partage et d’entraide)</li>
+        </u>
       </div>
     </div>
-  <% end %>
+    <div class="col-xs-12 col-sm-6">
+      <div class="bg-image" style="background-image: url(<%= asset_path('team-CP2.jpg') %>);">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container-fluid large-padded bg-grey">
   <div class="row" id="cities">
-    <h2 class="text-center spaced-bottom spaced-top">
-      Pour t'inscrire sélectionne ci-dessous ta ville:<br />
-    </h2>
+    <h3 class="text-center spaced-bottom spaced-top">
+      Retrouvez la liste des sessions sportives par ville :<br />
+    </h3>
 <!--     Faire boucle sur les villes  -->
     <div class="cities">
       <% unless @cities.empty? %>
         <div class="col-xs-12 col-sm-6 col-sm-offset-4 col-lg-4">
-        	<div class='text-deco-none'>
+          <div class='text-deco-none'>
             <% @cities.each do |c| %>
               <% if c.public == true %>
                 <%= link_to city_path(c.name.downcase) do %>
@@ -38,12 +89,145 @@
                   </div>
                 <% end %>
               <% end %>
-  		      <% end %>
-  		    </div>
-    		</div>
+            <% end %>
+          </div>
+        </div>
       <% end %>
+
+      <div class='class="col-xs-12 col-sm-6 col-sm-offset-4 col-lg-4"'>
+  <h4>Tarifs accessibles à tous les entrepreneurs:</h4>
+  <ul>
+    <li>A la séance: 10€</li>
+    <li>Abonnement mensuel: 29,99€ / mois </li>
+    <li>Abonnement annuel: 250 €</li>
+  </ul>
+
+
+<p>Des privilèges pour les abonnements annuels: </p>
+<ul>
+  <li>Tarifs préférentiels sur tous les évènements organisés par Chaud Patate</li>
+  <li>Avantages sur le réseau de partenaires</li>
+</ul>
+</div>
+  </div>
+
+  </div>
+
+
+
+  <% unless user_signed_in? %>
+    <div class="row">
+      <div class="buttons">
+<!--         <a href="#concept" id="concept-button" class="btn btn-gray">Découvrir notre concept</a> -->
+        <%= link_to "Je m'inscris", new_user_session_path, class: "btn btn-green" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="container-fluid" id="contenu">
+<h2 class="text-center">Chaud Patate, c’est aussi pour les entreprises</h2>
+ <br>
+ <br>
+ <h3 class='text-center'>Cours collectifs privés</h3>
+
+ <p>Nous proposons aux entreprises des séances de sport collectives hebdomadaires de <b>45 min à 1h par séance</b>. Nous nous adaptons aux contraintes d’espace et de temps afin de fournir une prestation qui correspondra aux attentes de vos collaborateurs.
+
+L’entraide, l’échange et le partage constituent  l’ADN de Chaud Patate. Nous associons aux séances de sport les valeurs fondatrices de Chaud Patate  afin d’inclure dans celles-ci des moments de networking.
+
+</p>
+  <div class="row no-gutter">
+    <div class="col-xs-12 col-sm-6">
+      <div class="bg-image" style="background-image: url(<%= asset_path('team-CP3.jpg') %>);">
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="side-margin">
+        <p><b>Pour qui?</b></p>
+        <ul>
+          <li>Les entreprises de toutes tailles</li>
+          <li>Les espaces de coworking</li>
+          <li>Les incubateurs</li>
+        </ul>
+        <p><b>Pourquoi?</b></p>
+        <ul>
+          <li>Echapper au stress le temps d’une séance de détente hebdo</li>
+          <li>Lâcher prise</li>
+          <li>Renforcer les liens entre les membres de votre communauté,  collaborateurs de votre entreprise,...</li>
+        </ul>
+      </div>
     </div>
   </div>
+  <br>
+  <br>
+   <h3 class='text-center'>Speed Icebreaking Sportif (S.I.S)</h3>
+
+ <p>Fort d’une expérience dans le Networking Sportif, nous avons inventé un format complètement novateur, le Speed Icebreaking Sportif (S.I.S). Celui-ci permet aux entreprises, aux organisateurs de salons et d’évènements d’utiliser notre méthode comme “Icebreaker”.
+
+Utilisez le Speed Icebreaking Sportif comme un catalyseur de rencontre  et d’échange, entre vos collaborateurs, vos visiteurs, visiteurs et exposant, entre exposants,....
+<br>
+<p class='text-center'>La tenue de sport n’est pas obligatoire !</p>
+</p>
+<br>
+<br>
+<h4 class='text-center'>Son intérêt? Voici quelques exemples:</h4>
+<br>
+  <p><b>#1. CRÉEZ DU LIEN</b></p>
+
+  <p>Plus votre entreprise se développe, plus les liens entre les collaborateurs sont nécessaires et déterminants. Le S.I.S vous permet de créer de l'interaction entre des services qui ne sont pas nécessairement habitués à communiquer entre eux. Et ce, via des séances ludiques de sport adaptées à tous les niveaux.
+Créez-les à travers des séances ludiques de sport adaptées à tous les niveaux.</p>
+<br>
+<p><b>#2. PENSEZ HUMAIN</b></p>
+
+<p>La relation client est pour votre entreprise un sujet primordial. Jouez la carte de la proximité avec eux et invitez-les à se rencontrer et/ou vous rencontrer. A l’heure du tout digital, nous vous aidons à remettre l’HUMAIN au centre de votre processus de CRM. Un moyen supplémentaire de les fidéliser.</p>
+<br>
+<p><b>#3. DYNAMISER MALIN</b></p>
+
+<p>Dynamiser votre événement avec notre approche et permettez aux exposants, invités et visiteurs d’être acteurs de celui-ci.</p>
+<br>
+<br>
+
+
+   <h3 class='text-center'>Les Job Run</h3>
+
+ <p>Dédiées aux entreprises qui souhaitent voir leur équipe s’agrandir, les job run sont une manière innovante et décomplexée de recruter vos futurs collaborateurs.
+
+<p class="text-center"><b>Notre méthode ?</b></p>
+
+Utilisez le sport comme filtre complémentaire à votre processus de recrutement et re-visitez l’entretien version “sport” de manière décontractée, ludique et accessible à tous.
+
+<p class="text-center"><b>Son intérêt ? Ce que vous avez à gagner ?</b></p>
+
+Aujourd'hui, votre enjeu principal est de détecter les softs skills talents et les compétences de vos candidats. Finit les discours commerciaux, découvrez leur vraie nature en leur proposant de les rencontrer autour d’une séance de “sport”. Une manière de voir leur aptitude à penser “out of box”.
+<br>
+<p class='text-center'>La tenue de sport n’est pas obligatoire !</p>
+</p>
+<br>
+<br>
+  <div class="row no-gutter">
+    <div class="col-xs-12 col-sm-6">
+      <div class="side-margin">
+        <p><b>Pour qui?</b></p>
+        <ul>
+          <li><b>Les entreprises</b> qui souhaitent diversifier leur process de recrutement</li>
+          <li><b>Les espaces de coworking</b> qui veulent apporter un service complémentaire à leurs résidents</li>
+          <li><b>Les écoles</b> qui cherchent  à faciliter le recrutement de leurs étudiants.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="bg-image" style="background-image: url(<%= asset_path('team-CP4.jpg') %>);">
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+
+
+
+
+
   <div class='row'>
   <h2 class="text-center spaced-bottom spaced-top">
     <small>
@@ -53,108 +237,9 @@
     </h2>
     </div>
 </div>
-<div class="bg-grey spaced-top padded" id="concept">
-  <div class="container">
-    <div class="row">
-      <h2 class="text-center spaced-bottom">
-        Concept<br /><small>Le rendez-vous sportif des startupers et des entrepreneurs</small>
-      </h2>
-      <div class="col-xs-12 col-sm-3 text-center">
-        <%= image_tag("cardio-icon.png", size: "40x40", alt: "Edit Entry", class: "brand-colored") %>
-        <p>
-          Séance comportant cardio-training, renforcement musculaire et sport d’équipe.
-        </p>
-      </div>
-      <div class="col-xs-12 col-sm-3 text-center">
-        <%= image_tag("coworking.png", size: "50x50", alt: "Edit Entry", class: "brand-colored") %>
-        <p>
-          Les entraînements indoor et en plein air depuis les structures partenaires.
-        </p>
-      </div>
-      <div class="col-xs-12 col-sm-3 text-center">
-        <%= image_tag("networking.png", size: "50x50", alt: "Edit Entry", class: "brand-colored") %>
-        <p>
-          Interaction avec l’écosystème entrepreneurial
-        </p>
-      </div>
-      <div class="col-xs-12 col-sm-3 text-center">
-        <%= image_tag("talking.png", size: "50x50", alt: "icone experience", class: "brand-colored") %>
-        <p>
-          Partage d’expériences et des compétences des membres du réseau
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="container-fluid" id="contenu">
-  <div class="row no-gutter">
-    <div class="col-xs-12 col-sm-6">
-      <div class="side-margin">
-        <h2 class="spaced-top spaced-bottom">Notre méthode qui fait la différence</h2>
-        <p>Des jeux sportifs pour briser la glace</p>
-        <ul>
-          <li>Pitch elevator sportif</li>
-          <li>Nice to meet You</li>
-          <li>You know he is the best in</li>
-          <li>W.I.N to win</li>
-        </u>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <div class="bg-image" style="background-image: url(<%= asset_path('bg-sport3.jpg') %>);">
-      </div>
-    </div>
-  </div>
-  <div class="row no-gutter">
-    <div class="col-xs-12 col-sm-6">
-        <div class="bg-image" style="background-image: url(<%= asset_path('bg-sport.jpg') %>);">
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <div class="side-margin">
-        <h2 class="spaced-top spaced-bottom">Contenu d'une séance</h2>
-        <ul>
-          <li>Accueil des participants (15min avant la séance)</li>
-          <li>Séance d'entraînement d’une heure</li>
-          <li>Pour finir avec un petit rafraichissement</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="row no-gutter">
-    <div class="col-xs-12 col-sm-6">
-      <div class="side-margin">
-        <h2 class="spaced-top spaced-bottom">Informations complémentaires</h2>
-        <ul>
-          <li><strong>Durée de la séance:</strong> 1 heure</li>
-          <li><strong>Tarif:</strong> 1ère séance gratuite puis 5€/pers par
-          séance sous forme de carnet de 10 séances.</li>
-          <li><strong>Deux niveaux de pratiques:</strong>
-          Patate Douce (débutant) et Patator (confirmé)</li>
-          <li><strong>Bonus:</strong> Rafraîchissement offert par la structure d’accueil.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <div class="bg-image" style="background-image: url(<%= asset_path('bg-sport2.jpg') %>);">
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container-fluid large-padded bg-grey" id="mot-du-coach">
-  <div class="row">
-    <div class="col-xs-12 col-sm-3 col-sm-offset-2 text-center spaced-bottom">
-      <%= image_tag("paul-voillemin.jpg", size: "200x200", alt: "Edit Entry", class: "avatar-portrait") %>
-    </div>
-    <h2 class="col-xs-12 col-sm-5 text-left spaced-bottom">
-      Le mot de Paul Voillemin<br /><small>Coach et fondateur de Chaud Patate</small>
-    </h2>
-    <div class="col-xs-12 col-sm-5">
-      <p>Novembre 2015, je rejoins un nouvel espace de coworking où personne ne se connaît encore. Afin de briser la glace, je propose aux résidents un défi sportif de 2 minutes. Tout le monde joue le jeu et en redemande de manière quotidienne. Un bon moyen pour sortir la tête de leur écran, communiquer et bouger. Ces mini défis finissent par devenir des séances d’une heure et depuis, l’histoire continue ! Grâce à Chaud Patate tu joins l’utile à l’agréable, tu te maintiens en forme tout en développant ton réseau professionnel. Alors viens te défouler et partager un moment sympa avec nous.
-      </p>
-    </div>
-  </div>
+
+
 </div>
 <% content_for :after_js do %>
   <script type="text/javascript">
