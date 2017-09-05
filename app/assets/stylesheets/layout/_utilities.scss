@@ -27,6 +27,8 @@ a {
 .no-gutter > [class*='col-'] {
   padding-right:0;
   padding-left:0;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 // Headers
@@ -95,4 +97,9 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 }
 .inactive {
   display: none;
+}
+
+.container-fluid {
+  padding-top: 5em;
+  padding-bottom: 5em;
 }
