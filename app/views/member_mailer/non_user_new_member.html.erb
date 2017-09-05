@@ -132,32 +132,34 @@
                                                       <tr>
                                                         <td class="content">
 
-                                                          <h2>Bonjour <%= @user.first_name %>,</h2>
+                                                          <h2>Bonjour,</h2>
 
                                                           <p>
-                                                            Je suis très heureux de vous accueillir dans la communauté Chaud Patate.
+                                                          <%= @member.user.full_name %> vient de vous inviter aux cours privés de <%= @city.name %>.
                                                           </p>
-
-                                                          <p>
-                                                            Inscrivez-vous dès maintenant à une session en achetant une séance à l'unité (10 euros) ou profitez d'un nombre de séances illimitées avec nos abonnements mensuel et annuel !
-                                                          </p>
-
-                  <!--                                         <p>Bénéficiez d'une séance supplémentaire offerte en parrainant 5 de vos amis !
-                                                            <br>
-                                                            Ils n'auront qu'à utiliser votre code promo lors de leur inscription.</p>
-
-                                                            <p>Votre code promo : <%= @user.promocode %></p> -->
-
+                                                          <p> Devenez dès maintenant membre de la communauté ChaudPatate et bénéficiez de cours de networking privés !</p>
                                                             <table>
                                                               <tr>
                                                                 <td align="center">
                                                                   <p>
-                                                                  <%= link_to "Je m'inscris à une session !", root_url, class: 'button' %>
+                                                                  <%= link_to "Je m'inscris !", new_user_session_url, class: 'button' %>
                                                                   </p>
+
                                                                 </td>
                                                               </tr>
                                                             </table>
 
+                                                          <p>Pour cela, c'est facile: inscrivez-vous d'abord en suivant le lien ci-dessus, puis consultez la liste des sessions privées disponibles :</p>
+                                                            <table>
+                                                              <tr>
+                                                                <td align="center">
+                                                                  <p>
+                                                                  <%= link_to "Je m'inscris à un cours privé", city_url(@city.slug), class: 'button' %>
+                                                                  </p>
+
+                                                                </td>
+                                                              </tr>
+                                                            </table>
                                                             <p>A très bientôt,</p>
 
                                                             <p><em>– Paul de Chaudpatate</em></p>
