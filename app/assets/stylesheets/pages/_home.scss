@@ -36,11 +36,12 @@ h2 {
 #concept img{
   margin-bottom: 20px;
 }
-#contenu .side-margin {
+.side-margin {
   margin-right: 30px;
   margin-left: 30px;
+  padding-top: 30px;
 }
-#contenu {
+#contenu #cities #icebreaking #corporate #job-run {
   font-size: 16px;
   ul li{
     line-height: 2em;
@@ -50,10 +51,12 @@ h2 {
   text-decoration: none;
   color: $gray-very-light;
 }
-#mot-du-coach {
+.home {
   p {
     font-size: 16px;
     line-height: 1.5em;
-    color: #888;
+    // color: #888;
   }
 }
+
+

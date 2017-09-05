@@ -31,6 +31,7 @@ drift.load('9wc2vbtv377e');
 </script>
 <!-- End of Async Drift Code -->
 </head>
+<div class="home">
 <div class="banner">
   <div class="banner-content">
     <h1>Chaudpatate</h1>
@@ -38,7 +39,7 @@ drift.load('9wc2vbtv377e');
   </div>
 </div>
 
-<div class="container-fluid large-padded bg-grey" id="mot-du-coach">
+<div class="container-fluid large-padded" id="mot-du-coach">
   <div class="row">
     <div class="col-xs-12 col-sm-3 col-sm-offset-2 text-center spaced-bottom">
       <%= image_tag("paul-voillemin.jpg", size: "200x200", alt: "Edit Entry", class: "avatar-portrait") %>
@@ -63,7 +64,7 @@ drift.load('9wc2vbtv377e');
   </div>
 </div>
 
-<div class="container-fluid" id="contenu">
+<div class="container-fluid bg-grey" id="contenu">
   <h2 class="text-center">Le 1er réseau de Networking Sportif français
  pour les entrepreneurs</h2>
   <br>
@@ -94,7 +95,7 @@ drift.load('9wc2vbtv377e');
   </div>
 </div>
 
-<div class="container-fluid large-padded bg-grey">
+<div class="container-fluid large-padded">
   <div class="row" id="cities">
     <h3 class="text-center spaced-bottom spaced-top">
       Retrouvez la liste des sessions sportives par ville :<br />
@@ -134,8 +135,6 @@ drift.load('9wc2vbtv377e');
           </ul>
       </div>
   </div>
-</div>
-
 
 
   <% unless user_signed_in? %>
@@ -183,7 +182,8 @@ drift.load('9wc2vbtv377e');
   <br>
   <br>
   </div>
-  <div id="icebreaking">
+  </div>
+  <div class="container-fluid" id="icebreaking">
   <h3 class='text-center spaced-bottom'>Speed Icebreaking Sportif (S.I.S)</h3>
   <p>Fort d’une expérience dans le Networking Sportif, nous avons inventé un format complètement novateur, le Speed Icebreaking Sportif (S.I.S). Celui-ci permet aux entreprises, aux organisateurs de salons et d’évènements d’utiliser notre méthode comme “Icebreaker”.
   Utilisez le Speed Icebreaking Sportif comme un catalyseur de rencontre  et d’échange, entre vos collaborateurs, vos visiteurs, visiteurs et exposant, entre exposants,....
@@ -208,15 +208,15 @@ drift.load('9wc2vbtv377e');
   <br>
   </div>
 
-  <div class="job-run">
+  <div class="container-fluid bg-grey" id="job-run">
   <h3 class='text-center spaced-bottom'>Les Job Run</h3>
   <p>Dédiées aux entreprises qui souhaitent voir leur équipe s’agrandir, les job run sont une manière innovante et décomplexée de recruter vos futurs collaborateurs.
-  <p class="text-center"><b>Notre méthode ?</b></p>
+  <p><b>Notre méthode ?</b></p>
   Utilisez le sport comme filtre complémentaire à votre processus de recrutement et re-visitez l’entretien version “sport” de manière décontractée, ludique et accessible à tous.
-  <p class="text-center"><b>Son intérêt ? Ce que vous avez à gagner ?</b></p>
+  <p><b>Son intérêt ? Ce que vous avez à gagner ?</b></p>
   Aujourd'hui, votre enjeu principal est de détecter les softs skills talents et les compétences de vos candidats. Finit les discours commerciaux, découvrez leur vraie nature en leur proposant de les rencontrer autour d’une séance de “sport”. Une manière de voir leur aptitude à penser “out of box”.
   <br>
-  <p class='text-center'>La tenue de sport n’est pas obligatoire !</p>
+  <p>La tenue de sport n’est pas obligatoire !</p>
   </p>
   <br>
   <br>
@@ -256,6 +256,8 @@ drift.load('9wc2vbtv377e');
 </div> -->
 
 
+
+</div>
 
 </div>
 <% content_for :after_js do %>

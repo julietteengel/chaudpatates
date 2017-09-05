@@ -7,6 +7,8 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= favicon_link_tag 'logo.png', type: 'image/png' %>
     <%= javascript_include_tag 'application' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <%= yield(:koudoku) %>
   </head>
