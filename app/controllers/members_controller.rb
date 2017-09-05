@@ -21,8 +21,10 @@ class MembersController < ApplicationController
         if User.find_by_email(email).nil? == false # déjà user
           @member.is_a_user = true
           @member.save
+          MemberMailer.user_new_member(@member).deliver
        else # user n'existe pas - envoyer mail à member et lui proposer de s'inscrire
           # envoyer un autre mail
+          MemberMailer.non_user_new_member(@member).deliver
         end
       end
     redirect_to(root_path)
