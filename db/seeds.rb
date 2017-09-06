@@ -135,13 +135,13 @@ belle_mai = Location.create!(
 
 ticket_by_10 = TicketsPackage.create!(
 	sku: "ticket-training-by-10",
-	price: 50,
-	tickets_nb: 10
+	price: 10,
+	tickets_nb: 1
 	)
 
 Plan.create({
       name: 'Abonnement mensuel',
-      price: 24.00,
+      price: 29.99,
       interval: 'month',
       highlight: true,
       stripe_id: '3_months_subscription',
