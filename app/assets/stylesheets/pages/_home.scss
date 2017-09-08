@@ -54,7 +54,7 @@ h2 {
   color: $gray-very-light;
 }
 .home {
-  p {
+  p, li {
     font-size: 16px;
     line-height: 1.5em;
     text-align: justify;
@@ -65,6 +65,11 @@ h2 {
   }
   h4 {
     color: #666666;
+  }
+  .city-card {
+    h3 {
+      color: #fff;
+    }
   }
 }
 
@@ -81,3 +86,7 @@ hr.style-two {
       background: #333;
     background-image: linear-gradient(to right, $light-green, $brand-color, $light-green);
     }
+
+.koudoku-subscriptions-edit h1 {
+  color: white;
+}

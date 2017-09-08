@@ -56,7 +56,7 @@
         <% if current_user.subscribed? %>
           <%= link_to "Mon abonnement", koudoku.owner_subscriptions_path(current_user), class: "navbar-wagon-link" %>
         <% else %>
-          <h5>Séances <span class="circle"><%= current_user.tickets_nb %></span></h5>
+          <h5>Crédits <span class="circle"><%= current_user.tickets_nb %></span></h5>
         <% end %>
         </div>
 
@@ -104,7 +104,7 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Se connecter"), main_app.new_user_session_path, class: "navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "S'inscrire / Se connecter"), main_app.new_user_session_path, class: "navbar-wagon-link" %>
 
     <% end %>
 

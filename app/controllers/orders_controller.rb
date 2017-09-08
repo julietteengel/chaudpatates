@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
 		charge_customer
 		update_customer_tickets
 		update_order_status
-		flash[:notice] = "Votre paiement a bien fonctionné et #{@order.tickets_nb} a été rajouté à votre compte"
+		flash[:notice] = "Votre paiement a bien fonctionné et #{@order.tickets_nb} ticket a été rajouté à votre compte"
 	  redirect_to(:back)
 	  rescue Stripe::CardError => e
 		  flash[:error] = "Votre paiement n'a pas fonctionné, merci de réessayer"
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
 	private
 
 	def set_ticket
-		@tickets_package = TicketsPackage.find(params[:tickets_package_id])
+		@tickets_package = s.find(params[:tickets_package_id])
 	end
 
 	def create_order
