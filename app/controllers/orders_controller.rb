@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
 	private
 
 	def set_ticket
-		@tickets_package = s.find(params[:tickets_package_id])
+		@tickets_package = TicketsPackage.find(params[:tickets_package_id])
 	end
 
 	def create_order
