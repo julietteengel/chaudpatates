@@ -143,9 +143,9 @@ Plan.create({
       name: 'Abonnement mensuel',
       price: 29.99,
       interval: 'month',
-      highlight: true,
+      # highlight: true,
       stripe_id: '3_months_subscription',
-      features: ['Séances illimitées', 'Engagement sur 3 mois'].join("\n\n"),
+      features: ['Séances illimitées', 'Sans engagement'].join("\n\n"),
       display_order: 1
     })
 

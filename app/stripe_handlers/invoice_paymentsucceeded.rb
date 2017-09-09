@@ -13,13 +13,15 @@ class InvoicePaymentsucceeded
     # if user.subscribed? suscribed va reprendre les conditions de la ligne 12
     #   si suscribed à tel truc, user.suscribed en argument avec le plan
     #   là t's un true ou false
-    if (all_invoices.count == 3) && (stripe_subscription.plan.id == "3_months_subscription")
-      # ci-dessous: méthode pour annuler de l'abonnement automatiquement après le 3e paiement
-      # stripe_subscription.delete(:at_period_end => true)
-      # user.subscribed? == false # TODO: trouver un moyen de passer en false un mois plus tard
-      ::PaymentMailer.subscription_cancelled(subscription).deliver
-    else
+
+    # if (all_invoices.count == 3) && (stripe_subscription.plan.id == "3_months_subscription")
+    #   # ci-dessous: méthode pour annuler de l'abonnement automatiquement après le 3e paiement
+    #   # stripe_subscription.delete(:at_period_end => true)
+    #   # user.subscribed? == false # TODO: trouver un moyen de passer en false un mois plus tard
+    #   ::PaymentMailer.subscription_cancelled(subscription).deliver
+    # else
+
       ::PaymentMailer.payment_succeeded(subscription).deliver
-    end
+    # end
   end
 end
