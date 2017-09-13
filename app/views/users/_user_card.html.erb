@@ -5,9 +5,9 @@
 
 
 <%
-img_url = city_member.linkedin_picture_url
+img_url = URI.encode(city_member.linkedin_picture_url)
 res = Net::HTTP.get_response(URI.parse(img_url))
-img_url = "https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png" unless res.code.to_i >= 200 && res.code.to_i < 400 #good codes will be betweem 200 - 399
+img_url = URI.encode("https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png") unless res.code.to_i >= 200 && res.code.to_i < 400 #good codes will be betweem 200 - 399
 %>
 
   <% if img_url && city_member.linkedin_profile %>
