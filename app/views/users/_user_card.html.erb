@@ -3,16 +3,13 @@
 
 <% unless city_member.nil? %>
 
-
-  <% if image_tag(city_member.linkedin_picture_url) %>
-    <% unless city_member.linkedin_picture_url.nil? %>
+  <% if city_member.linkedin_picture_url && city_member.linkedin_profile %>
     <%= link_to city_member.linkedin_profile, target: "_blank" do %>
 
       <%= image_tag city_member.linkedin_picture_url , src: 'Image Not Found' , onError: 'this.error=null;this.src="https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png"', width: 80, height: 80, crop: :fill,  class: "avatar-big"%>
 
     <% end %>
-    <% end %>
-  <% elsif image_tag(city_member.linkedin_picture_url) && city_member.linkedin_profile.nil? %>
+  <% elsif city_member.linkedin_picture_url && city_member.linkedin_profile.nil? %>
 <!-- TODO : coder helper pour check if an image was found on a web site -->
 
     <% if city_member.photo.nil? %>
