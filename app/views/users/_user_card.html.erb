@@ -1,9 +1,7 @@
 <div class="member">
 
 
-<% unless city_member.nil? %>
-
-<% unless city_member.linkedin_picture_url.nil? %>
+<% unless city_member.nil? && city_member.linkedin_picture_url.nil? %>
 
   <% if image_tag(city_member.linkedin_picture_url) && city_member.linkedin_profile %>
     <%= link_to city_member.linkedin_profile, target: "_blank" do %>
@@ -26,6 +24,6 @@
   <% end %>
   <p><%= city_member.first_name %></p>
  <% end %>
-  <% end %>
+
 </div>
 
