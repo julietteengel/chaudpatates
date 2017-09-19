@@ -3,27 +3,27 @@
 
 <% unless city_member.nil? %>
 
-
-
-
-  <% if image_tag(city_member.linkedin_picture_url , src: 'Image Not Found' , onerror: 'this.error=null;this.src="https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png"') && city_member.linkedin_profile %>
+  <% if city_member.linkedin_picture_url && city_member.linkedin_profile %>
     <%= link_to city_member.linkedin_profile, target: "_blank" do %>
-      <%= image_tag city_member.linkedin_picture_url , src: 'Image Not Found' , onerror: 'this.error=null;this.src="https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png"', width: 80, height: 80, crop: :fill,  class: "avatar-big"%>
+
+      <%= image_tag city_member.linkedin_picture_url , src: 'Image Not Found' , onError: 'this.error=null;this.src="https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png"', width: 80, height: 80, crop: :fill,  class: "avatar-big"%>
+
     <% end %>
-  <% elsif image_tag(city_member.linkedin_picture_url , src: 'Image Not Found' , onerror: 'this.error=null;this.src="https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png"') && city_member.linkedin_profile.nil? %>
+  <% elsif city_member.linkedin_picture_url && city_member.linkedin_profile.nil? %>
 <!-- TODO : coder helper pour check if an image was found on a web site -->
 
     <% if city_member.photo.nil? %>
-      <%= image_tag image_tag city_member.linkedin_picture_url , src: 'Image Not Found' , onerror: 'this.error=null;this.src="https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png"', width: 80, height: 80, crop: :fill,  class: "avatar-big"%>
+      <%= image_tag image_tag city_member.linkedin_picture_url, src: 'Image Not Found' , onError: 'this.error=null;this.src="https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png"', width: 80, height: 80, crop: :fill,  class: "avatar-big"%>
     <% else %>
-      <%= cl_image_tag city_member.photo.path, width: 160, height: 160, crop: :fill, secure: true, class: "avatar-big"%>
+      <%= cl_image_tag city_member.photo.path, src: 'Image Not Found' , onError: 'this.error=null;this.src="https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png"', width: 160, height: 160, crop: :fill, secure: true, class: "avatar-big"%>
     <% end %>
   <% elsif city_member.photo %>
-  <%= cl_image_tag city_member.photo.path, height: '120', width: '120', crop: :fill, class: "avatar-big" %>
+  <%= cl_image_tag city_member.photo.path, src: 'Image Not Found' , onError: 'this.error=null;this.src="https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png"', height: '120', width: '120', crop: :fill, class: "avatar-big" %>
   <% else %>
     <%= image_tag "https://res.cloudinary.com/ind-pendant/image/upload/v1478766698/user_mkbsoj.png", width: 80, height: 80, crop: :fill, class: "avatar-big" %>
   <% end %>
   <p><%= city_member.first_name %></p>
  <% end %>
+
 </div>
 
