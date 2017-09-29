@@ -50,6 +50,12 @@
       <!-- Signup text link -->
       <%= link_to "M'inscrire", main_app.new_user_registration_path %>
     </li>
+    <li>
+      <%= link_to "Séances", "#{main_app.root_path}#cities" %>
+    </li>
+    <li>
+    <%= link_to "Services Entreprises", "#{main_app.root_path}#corporate" %>
+    </li>
     <% end %>
   </ul>
 </div>
