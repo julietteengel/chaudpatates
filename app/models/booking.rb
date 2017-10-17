@@ -16,11 +16,11 @@ class Booking < ApplicationRecord
 
   def notify_customer
     BookingMailer.booked(self).deliver_now
-    if (Time.current + 2.days > training.date)
-      BookingMailer.delay_until(training.date - 2.days).upcoming(self)
-    elsif Time.current + 1.days > training.date
-      BookingMailer.delay_until(training.date - 1.day).upcoming(self)
-    end
+    # if (Time.current + 2.days > training.date)
+    #   BookingMailer.delay_until(training.date - 2.days).upcoming(self)
+    # elsif Time.current + 1.days > training.date
+    #   BookingMailer.delay_until(training.date - 1.day).upcoming(self)
+    # end
   end
 
   def notify_admin_cancellation # TODO

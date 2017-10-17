@@ -79,16 +79,16 @@ class BookingsController < ApplicationController
         }
         format.js
       end
-   #  elsif (Time.current < @booking.training.date - 1.day) && @booking.destroy
-			# current_user.tickets_nb += 1
-			# current_user.save
-   #    respond_to do |format|
-   #      format.html {
-   #        flash[:notice] = "Votre inscription a bien été annulée"
-   #        redirect_to(bookings_path)
-   #      }
-   #      format.js
-   #    end
+    elsif (Time.current < @booking.training.date - 1.day) && @booking.destroy
+			current_user.tickets_nb += 1
+			current_user.save
+      respond_to do |format|
+        format.html {
+          flash[:notice] = "Votre inscription a bien été annulée"
+          redirect_to(bookings_path)
+        }
+        format.js
+      end
     else
       respond_to do |format|
         format.html {
