@@ -40,7 +40,7 @@ private
   end
 
   def users_params
-    params.require(:user).permit(:photo, :email, :phone, :company, :role, :bio)
+    params.require(:user).permit(:photo, :email, :phone, :company, :role, :bio, :city)
   end
 
   # def set_user
