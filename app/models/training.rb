@@ -70,7 +70,7 @@ class Training < ApplicationRecord
   end
 
   def notify_user_for_cancellation
-    TrainingMailer.cancellation(self).deliver_now
+    TrainingMailer.cancellation(self).deliver_now unless (self.date < Date.today)
   end
 
   def notify_member_before_training
