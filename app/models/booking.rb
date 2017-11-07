@@ -24,8 +24,8 @@ class Booking < ApplicationRecord
   end
 
   def notify_admin_cancellation # TODO
-    unless current_user == training.city.coach && (self.training.date < Date.today)
-    BookingMailer.cancelled(self).deliver_now
+    unless current_user == training.city.coach
+      BookingMailer.cancelled(self).deliver_now unless self.training.date < Date.today
     end
   end
 
