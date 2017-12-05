@@ -27,6 +27,7 @@ class Training < ApplicationRecord
   has_attachment :photo
 
   before_destroy :notify_user_for_cancellation, prepend: true
+
   # before_destroy :refund_user, prepend: true
   after_commit :notify_member_before_training, on: :create
   # after_create :notify_non_member_before_training
